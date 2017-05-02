@@ -70,7 +70,7 @@ _python_impl_supported() {
 		python2_7|python3_[456]|jython2_7)
 			return 0
 			;;
-		pypy1_[89]|pypy2_0|python2_[56]|python3_[123])
+		pypy1_[89]|pypy2_0|python2_[56]|python3_[123789])
 			return 1
 			;;
 		pypy|pypy3)
