@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ceph/python-crush"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz
 	doc? ( mirror://gentoo/${P}-sphinx.inv )"
 
-LICENSE="Apache-2.0"
+LICENSE="GPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
@@ -33,9 +33,16 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+PATCHES=("${FILESDIR}/python-crush-1.0.35-merge-upstream-6a21da59837-f3bc838894aa.patch")
+
 src_unpack() {
 	default
-	use doc && { cp "${DISTDIR}/${P}-sphinx.inv" "${S}/docs/${P}-sphinx.inv" || die; }
+   pushd /home/zmedico/repos/python-crush || die
+   rsync -av --exclude='*.rej' --relative \
+	   ./crush/libcrush/ \
+	   ./setup.cfg \
+	   "${S}"/ || die
+   popd || die	use doc && { cp "${DISTDIR}/${P}-sphinx.inv" "${S}/docs/${P}-sphinx.inv" || die; }
 }
 
 python_prepare_all() {
