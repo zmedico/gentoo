@@ -66,7 +66,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.socket dnscrypt-proxy.socket
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/dnscrypt-proxy.logrotate dnscrypt-proxy
+	newins "${FILESDIR}"/dnscrypt-proxy.logrotate-r1 dnscrypt-proxy
 
 	einstalldocs
 }
