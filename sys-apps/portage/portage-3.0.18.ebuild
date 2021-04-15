@@ -73,20 +73,9 @@ PDEPEND="
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
-SRC_ARCHIVES="https://dev.gentoo.org/~zmedico/portage/archives"
-
-prefix_src_archives() {
-	local x y
-	for x in ${@}; do
-		for y in ${SRC_ARCHIVES}; do
-			echo ${y}/${x}
-		done
-	done
-}
-
 TARBALL_PV=${PV}
-SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.xz
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.xz)"
+SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.gz
+	mirror://pypi/${PN:0:1}/${PN}/${PN}-${TARBALL_PV}.tar.gz"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
