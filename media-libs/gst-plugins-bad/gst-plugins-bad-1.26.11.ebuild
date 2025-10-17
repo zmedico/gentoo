@@ -52,12 +52,13 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	GST_PLUGINS_NOAUTO="bz2 hls ipcpipeline librfb shm va wayland"
+	GST_PLUGINS_NOAUTO="tinyalsa bz2 hls ipcpipeline librfb shm va wayland"
 
 	local emesonargs=(
 		-Dshm=enabled
 		-Dipcpipeline=enabled
 		-Dhls=disabled
+		-Dtinyalsa=disabled
 		$(meson_feature bzip2 bz2)
 		$(meson_feature vaapi va)
 		-Dudev=$(usex udev $(usex vaapi enabled disabled) disabled)
