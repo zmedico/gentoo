@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,10 @@ IUSE="cffi +ordered-keymap"
 
 RESTRICT=test # one test case fails
 
+CABAL_CHDEPS=(
+	'th-abstraction        >=0.3.0.0  && <0.6' 'th-abstraction        >=0.3.0.0  && <0.8'
+)
+
 RDEPEND="
 	>=dev-haskell/attoparsec-0.14.2:=[profile?] <dev-haskell/attoparsec-0.15:=[profile?]
 	>=dev-haskell/base-compat-batteries-0.10.0:=[profile?] <dev-haskell/base-compat-batteries-0.14:=[profile?]
@@ -37,7 +41,7 @@ RDEPEND="
 	>=dev-haskell/strict-0.4:=[profile?] <dev-haskell/strict-0.6:=[profile?]
 	>=dev-haskell/tagged-0.8.6:=[profile?] <dev-haskell/tagged-0.9:=[profile?]
 	>=dev-haskell/text-short-0.1.5:=[profile?] <dev-haskell/text-short-0.2:=[profile?]
-	>=dev-haskell/th-abstraction-0.3.0.0:=[profile?] <dev-haskell/th-abstraction-0.6:=[profile?]
+	>=dev-haskell/th-abstraction-0.3.0.0:=[profile?] <dev-haskell/th-abstraction-0.8:=[profile?]
 	>=dev-haskell/these-1.1.1.1:=[profile?] <dev-haskell/these-1.3:=[profile?]
 	>=dev-haskell/time-compat-1.9.6:=[profile?] <dev-haskell/time-compat-1.10:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.10.0:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
@@ -45,10 +49,7 @@ RDEPEND="
 	>=dev-haskell/vector-0.12.0.1:=[profile?] <dev-haskell/vector-0.14:=[profile?]
 	>=dev-haskell/witherable-0.4.2:=[profile?] <dev-haskell/witherable-0.5:=[profile?]
 	>=dev-lang/ghc-8.10.1:=
-	|| (
-		( >=dev-haskell/text-1.2.3.0 <dev-haskell/text-1.3 )
-		( >=dev-haskell/text-2.0 <dev-haskell/text-2.1 )
-	)
+	>=dev-haskell/text-1.2.3.0 <dev-haskell/text-2.1
 	dev-haskell/text:=[profile?]
 	cffi? (
 		<dev-haskell/text-2.0:=[profile?]
