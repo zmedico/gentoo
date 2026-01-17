@@ -30,8 +30,3 @@ DEPEND="${RDEPEND}
 		dev-haskell/tasty-quickcheck
 		dev-haskell/transformers-compat )
 "
-
-src_prepare() {
-	haskell-cabal_src_prepare
-	cabal-mksetup
-}
