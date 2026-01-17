@@ -17,6 +17,10 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+CABAL_CHDEPS=(
+	'base          >= 4.16.4.0 && <4.22' 'base          >= 4.15.1.0 && <4.22'
+	)
+
 RDEPEND=">=dev-haskell/aeson-1.4.1.0:=[profile?] <dev-haskell/aeson-2.3:=[profile?]
 	>=dev-haskell/attoparsec-0.13.2.2:=[profile?] <dev-haskell/attoparsec-0.15:=[profile?]
 	>=dev-haskell/bifunctors-5.5.3:=[profile?] <dev-haskell/bifunctors-5.7:=[profile?]
@@ -33,7 +37,7 @@ RDEPEND=">=dev-haskell/aeson-1.4.1.0:=[profile?] <dev-haskell/aeson-2.3:=[profil
 	>=dev-haskell/sop-core-0.4.0.0:=[profile?] <dev-haskell/sop-core-0.6:=[profile?]
 	>=dev-haskell/text-1.2.3.0:=[profile?] <dev-haskell/text-2.2:=[profile?]
 	>=dev-haskell/vault-0.3.1.2:=[profile?] <dev-haskell/vault-0.4:=[profile?]
-	>=dev-lang/ghc-9.2.5:=
+	>=dev-lang/ghc-9.0.2:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0
