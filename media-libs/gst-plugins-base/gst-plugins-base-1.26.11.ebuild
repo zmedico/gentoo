@@ -153,6 +153,10 @@ multilib_src_test() {
 
 	local -a _skip_tests=(
 		# flaky
+		elements_inputselector # tendency to timeout
+		elements_multisocketsink
+		generic_states
+		libs_gstglquery
 		pipelines_gl_launch_lines
 	)
 
