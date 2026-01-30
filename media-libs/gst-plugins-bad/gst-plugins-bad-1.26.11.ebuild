@@ -46,6 +46,10 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-1.26.11-respect-webrtcdsp-disable.patch
+)
+
 src_prepare() {
 	default
 	addpredict /dev # Prevent sandbox violations bug #570624
