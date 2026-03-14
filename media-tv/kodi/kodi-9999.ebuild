@@ -451,6 +451,9 @@ src_configure() {
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use mariadb && mycmakeargs+=( -DENABLE_INTERNAL_MARIADBCLIENT=OFF )
 	use !system-ffmpeg && mycmakeargs+=(
+		# Additional find_package on top of core_optional_deps for whatever reason
+		$(cmake_use_find_package vaapi VAAPI)
+		$(cmake_use_find_package vdpau VDPAU)
 		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
