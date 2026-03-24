@@ -5,11 +5,14 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit meson python-r1 xdg-utils
+inherit meson python-r1 verify-sig xdg-utils
 
 DESCRIPTION="A Python Interface to GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
-SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+SRC_URI="
+	https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz
+	verify-sig? ( https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
@@ -25,7 +28,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-tpm )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
 PATCHES=(
 	"${FILESDIR}"/gst-python-1.26.11-pygobject-3.52.patch
