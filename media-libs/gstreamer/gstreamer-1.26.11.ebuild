@@ -5,11 +5,14 @@ EAPI=8
 
 RUST_OPTIONAL=1
 RUST_MIN_VER=1.48
-inherit gstreamer-meson rust virtualx
+inherit gstreamer-meson rust verify-sig virtualx
 
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
-SRC_URI="https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz"
+SRC_URI="
+	https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz
+	verify-sig? ( https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
@@ -32,9 +35,11 @@ BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
 	ptp? ( ${RUST_DEPEND} )
+	verify-sig? ( sec-keys/openpgp-keys-tpm )
 "
 
 DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README.md RELEASE )
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
 # Rust
 QA_FLAGS_IGNORED="usr/.*/libexec/gstreamer-1.0/gst-ptp-helper"
