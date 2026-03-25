@@ -4,10 +4,11 @@
 EAPI=8
 GST_ORG_MODULE="gst-plugins-base"
 
-inherit flag-o-matic meson-multilib gstreamer-meson virtualx
+inherit flag-o-matic meson-multilib gstreamer-meson verify-sig virtualx
 
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI+=" verify-sig? ( https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz.asc )"
 
 LICENSE="GPL-2+ LGPL-2+"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos ~x64-solaris"
@@ -88,8 +89,10 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	X? ( x11-base/xorg-proto )
 "
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-tpm )"
 
 DOCS=( AUTHORS NEWS README.md RELEASE )
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
