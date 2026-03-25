@@ -3,10 +3,11 @@
 
 EAPI=8
 
-inherit gstreamer-meson
+inherit gstreamer-meson verify-sig
 
 DESCRIPTION="A GStreamer based RTSP server"
 HOMEPAGE="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
+SRC_URI+=" verify-sig? ( https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz.asc )"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm64 ~x86"
@@ -23,7 +24,9 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-tpm )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
 multilib_src_configure() {
 	local emesonargs=(
