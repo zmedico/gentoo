@@ -1561,6 +1561,15 @@ epytest() {
 		args+=(
 			"--timeout=${EPYTEST_TIMEOUT}"
 		)
+
+		if [[ -n ${EPYTEST_RERUNS} ]]; then
+			# This option helps with hangs in some cases when these plugins are used together.
+			# https://github.com/pytest-dev/pytest-timeout/issues/18
+			# https://github.com/pytest-dev/pytest-rerunfailures/issues/99
+			args+=(
+				-o timeout_func_only=true
+			)
+		fi
 	fi
 
 	if [[ ${EPYTEST_XDIST} ]]; then
