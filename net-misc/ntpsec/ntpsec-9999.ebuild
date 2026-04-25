@@ -175,14 +175,19 @@ src_install() {
 	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 
-	# move doc files to /usr/share/doc/"${P}"
-	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
-
 	ln -svf pylib build/main/ntp || die
 	distutils-r1_src_install
 	waf-utils_src_install --notests
 	python_fix_shebang "${ED}"
 	python_optimize
+
+	# move doc files to /usr/share/doc/"${PF}"
+	# TODO check when upstream waf updated to > 2.1.9 and configure with:
+	#  --docdir="/use/share/docs/${PF}"
+	#  --htmldir="/use/share/docs/${PF}/html"
+	if use doc ; then
+		mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${PF}"/html || die
+	fi
 }
 
 pkg_postinst() {
