@@ -167,6 +167,9 @@ src_install() {
 	chmod 770 "${ED}"/var/lib/ntp
 	keepdir /var/lib/ntp
 
+	# Ensure statsdir exists
+	keepdir /var/log/ntpstats/
+
 	# Install a logrotate script
 	mkdir -pv "${ED}"/etc/logrotate.d
 	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
