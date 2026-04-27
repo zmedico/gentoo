@@ -121,13 +121,12 @@ src_configure() {
 		--nopyc
 		--nopyo
 		--refclock="${CLOCKSTRING}"
-		#--build-epoch="$(date +%s)"
-		$(use doc	|| echo "--disable-doc")
-		$(use early	&& echo "--enable-early-droproot")
-		$(use samba	&& echo "--enable-mssntp")
-		$(use seccomp	&& echo "--enable-seccomp")
-		$(use smear	&& echo "--enable-leap-smear")
-		$(use debug	&& echo "--enable-debug")
+		$(use_enable doc)
+		$(usev early --enable-early-droproot)
+		$(usev samba --enable-mssntp)
+		$(usev seccomp --enable-seccomp)
+		$(usev smear --enable-leap-smear)
+		$(usev debug --enable-debug)
 	)
 	python_setup
 	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml" || die
