@@ -26,13 +26,14 @@ else
 		S="${WORKDIR}"/${MY_P}
 
 		KEYWORDS="amd64 arm64 x86"
+		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-nlnetlabs-20260101 ) "
 	fi
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="+bind8-stats debug +dnstap +ipv6 libevent memclean minimal-responses mmap munin"
-IUSE+=" +nsec3 +radix-tree +ratelimit recvmmsg +simdzone ssl systemd +tfo xdp"
+IUSE+=" +nsec3 +radix-tree +ratelimit recvmmsg +simdzone ssl systemd +tfo xdp verify-sig"
 
 RDEPEND="
 	acct-group/nsd
@@ -52,12 +53,11 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND+="
 	app-alternatives/lex
 	app-alternatives/yacc
 	systemd? ( virtual/pkgconfig )
 	xdp? ( llvm-core/clang:*[llvm_targets_BPF] )
-	verify-sig? ( >=sec-keys/openpgp-keys-nlnetlabs-20260101 )
 "
 
 PATCHES=(
