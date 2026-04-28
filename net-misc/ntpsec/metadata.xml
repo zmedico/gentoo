@@ -30,6 +30,5 @@
 	</use>
 	<upstream>
 		<remote-id type="gitlab">NTPsec/ntpsec</remote-id>
-		<remote-id type="github">ntpsec/ntpsec</remote-id>
 	</upstream>
 </pkgmetadata>
