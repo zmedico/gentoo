@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Note: please bump this together with gui-wm/tinywl
+
 inherit meson
 
 DESCRIPTION="Pluggable, composable, unopinionated modules for building a Wayland compositor"
