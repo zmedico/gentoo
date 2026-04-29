@@ -495,3 +495,4 @@ x11-themes/adwaita-icon-theme-legacy
 >=gui-libs/libadwaita-1.8.2
 >=gnome-extra/gnome-user-share-48.2
 >=app-editors/gnome-text-editor-49.0
+>=x11-wm/mutter-49
