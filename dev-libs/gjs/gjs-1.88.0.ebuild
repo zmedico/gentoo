@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	test? (
 		sys-apps/dbus
 		>=x11-libs/gtk+-3.20:3[introspection]
-		>=gui-libs/gtk-4[introspection]
+		gui-libs/gtk:4[introspection]
 	)
 "
 BDEPEND="
