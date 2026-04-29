@@ -20,11 +20,13 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	media-libs/libsndfile[-minimal]
 "
+# dev-python/pkg-resources: https://github.com/whipper-team/whipper/issues/651
 RDEPEND="
 	${DEPEND}
 	app-cdr/cdrdao
 	>=dev-libs/libcdio-paranoia-0.94_p2
 	dev-python/musicbrainzngs[${PYTHON_USEDEP}]
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	>=dev-python/pycdio-2.1.0[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/discid[${PYTHON_USEDEP}]
