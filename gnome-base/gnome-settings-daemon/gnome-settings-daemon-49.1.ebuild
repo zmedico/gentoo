@@ -21,7 +21,7 @@ REQUIRED_USE="^^ ( elogind systemd )"
 COMMON_DEPEND="
 	>=sci-geosciences/geocode-glib-3.10:2
 	>=dev-libs/glib-2.70:2
-	>=gnome-base/gnome-desktop-4:4=
+	gnome-base/gnome-desktop:4=
 	>=gnome-base/gsettings-desktop-schemas-46.0
 	>=dev-libs/libgweather-4.2.0:4=
 	colord? ( >=x11-misc/colord-1.4.5:= )
