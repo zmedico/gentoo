@@ -113,7 +113,6 @@ RDEPEND="${DEPEND}
 "
 
 # avoid circular dependency, see bug #546134
-# keep gdm in sync with gnome-shell-${PV}
 PDEPEND="
 	>=gnome-base/gdm-49[introspection(+)]
 	>=gnome-base/gnome-control-center-3.26[networkmanager(+)?]
