@@ -143,7 +143,6 @@ PATCHES=(
 	# Makes some panels and dependencies optional
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
-	# FIXME patcho
 	"${WORKDIR}"/patches/
 )
 
