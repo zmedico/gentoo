@@ -130,6 +130,7 @@ BDEPEND="
 	dev-util/wayland-scanner
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	dev-python/docutils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
