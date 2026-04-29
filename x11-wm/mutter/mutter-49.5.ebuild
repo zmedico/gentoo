@@ -59,7 +59,6 @@ RDEPEND="
 	>=media-libs/glycin-2.0_beta_p2:=
 
 	devkit? (
-		gui-libs/gtk:4
 		gui-libs/libadwaita
 	)
 	gnome? ( gnome-base/gnome-desktop:4= )
