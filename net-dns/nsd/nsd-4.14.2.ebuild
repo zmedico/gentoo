@@ -74,9 +74,16 @@ QA_EXECSTACK="
 src_prepare() {
 	default
 
-	# Required to get correct pkg-config macros with USE="systemd".
-	# See bugs #663618 & #758050.
-	eautoreconf
+	if [[ ${PV} == *9999 ]] ; then
+		# When building from git, the configure script and simdzone sources are missing
+		# See README.md
+		git submodule update --init || die "Could't update submodules"
+		autoreconf -fi || die "autoreconf -fi failed"
+	else
+		# Required to get correct pkg-config macros with USE="systemd".
+		# See bugs #663618 & #758050.
+		eautoreconf
+	fi
 }
 
 src_configure() {
