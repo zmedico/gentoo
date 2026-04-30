@@ -6,9 +6,9 @@ inherit meson
 
 DESCRIPTION="Gnome session leader for OpenRC"
 HOMEPAGE="https://github.com/swagtoy/gnome-session-openrc"
+SRC_URI="https://github.com/swagtoy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
-SRC_URI="https://github.com/swagtoy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="X"
