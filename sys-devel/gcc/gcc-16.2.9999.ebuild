@@ -7,8 +7,8 @@ EAPI=8
 # https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
 
 TOOLCHAIN_HAS_TESTS=1
-PATCH_GCC_VER="16.0.0"
-MUSL_GCC_VER="16.0.0"
+PATCH_GCC_VER="16.1.0"
+MUSL_GCC_VER="16.1.0"
 PYTHON_COMPAT=( python3_{11..14} )
 
 if [[ -n ${TOOLCHAIN_GCC_RC} ]] ; then
