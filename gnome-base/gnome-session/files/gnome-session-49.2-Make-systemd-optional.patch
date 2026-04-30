@@ -285,7 +285,7 @@ index c453093e..f1060b77 100644
  ]
  
 +if get_option('systemd')
-+  programs += ['gnome-session-ctl', session_bin_deps, session_libexecdir]
++  programs += [['gnome-session-ctl', session_bin_deps, session_libexecdir]]
 +endif
 +
  foreach program: programs
