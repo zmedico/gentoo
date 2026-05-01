@@ -145,7 +145,6 @@ net-misc/x2goclient
 # Both games-rpg/zsdx and games-rpg/zsxd are potentially fixed for Solarus 2.0
 # in git master, but that requires someone motivated enough to try it out.
 # Removal on 2026-05-11.
-<games-engines/solarus-2.0.3
 <games-misc/solarus-quest-editor-2.0.3
 <games-rpg/zsdx-1.12.9999
 <games-rpg/zsxd-1.12.9999
