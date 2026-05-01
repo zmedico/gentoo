@@ -5,7 +5,7 @@ EAPI=8
 
 MATE_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{11..14} )
-inherit mate python-single-r1 virtualx
+inherit gnome2-utils mate python-single-r1 virtualx
 
 DESCRIPTION="Pluma text editor for the MATE desktop"
 SRC_URI="https://github.com/mate-desktop/pluma/releases/download/v${PV}/${P}.tar.xz"
@@ -60,7 +60,7 @@ MATE_FORCE_AUTORECONF=true
 
 src_prepare() {
 	# https://github.com/mate-desktop/pluma/issues/729
-        eapply "${FILESDIR}/${P}-girepository-detection.patch"
+	eapply "${FILESDIR}/${P}-girepository-detection.patch"
 
 	# Test require gvfs sftp fs mounted and schema's installed. Skip this one.
 	# https://github.com/mate-desktop/mate-text-editor/issues/33
