@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rakshasa/${PN}.git"
 else
 	SRC_URI="https://github.com/rakshasa/rtorrent/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -30,20 +30,19 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	~net-libs/libtorrent-${PV}
 	sys-libs/ncurses:0=
+	virtual/zlib:=
 	lua? ( ${LUA_DEPS} )
 	systemd? ( sys-apps/systemd:= )
 	xmlrpc? ( dev-libs/xmlrpc-c:=[libxml2] )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/nlohmann_json
+	test? ( dev-util/cppunit )
 "
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-rtorrent )
 "
-BDEPEND="
-	virtual/pkgconfig
-	test? ( dev-util/cppunit )
-"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.16.9-cross_checks.patch
