@@ -34,7 +34,7 @@ REQUIRED_USE="
 
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
 DEPEND="
-	=sec-policy/selinux-base-${PVR}[selinux_policy_types_targeted?,selinux_policy_types_strict?,selinux_policy_types_mcs?,selinux_policy_types_mls?,systemd?]
+	~sec-policy/selinux-base-${PV}[selinux_policy_types_targeted?,selinux_policy_types_strict?,selinux_policy_types_mcs?,selinux_policy_types_mls?,systemd?]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
