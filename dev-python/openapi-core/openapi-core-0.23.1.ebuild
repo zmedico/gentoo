@@ -56,9 +56,13 @@ EPYTEST_PLUGINS=( pytest-{aiohttp,asyncio} )
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(
-	# missing dependendencies
+	# missing dependencies
 	tests/integration/contrib/falcon
 	tests/integration/contrib/fastapi
+
+	# these require djangorestframework
+	tests/integration/contrib/django
+	tests/unit/contrib/django
 
 	# TODO: these tests fail to collect
 	tests/integration/validation/test_security_override.py
