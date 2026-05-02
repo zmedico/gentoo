@@ -30,7 +30,6 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/cbor2-5.4.6[${PYTHON_USEDEP}]
 		>=dev-python/immutables-0.20[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-1.0.5[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-4.4.0[${PYTHON_USEDEP}]
@@ -40,6 +39,7 @@ BDEPEND="
 		>=dev-python/ujson-5.10.0[${PYTHON_USEDEP}]
 		test-rust? (
 			$(python_gen_cond_dep '
+				>=dev-python/cbor2-5.4.6[${PYTHON_USEDEP}]
 				>=dev-python/orjson-3.11.3[${PYTHON_USEDEP}]
 			' 'python*')
 		)
@@ -68,6 +68,19 @@ python_test() {
 		tests/test_preconf.py::test_msgspec_native_enums
 	)
 
+	if ! has_version "dev-python/cbor2[${PYTHON_USEDEP}]"; then
+		# https://github.com/python-attrs/cattrs/pull/748
+		sed -i -e '/cbor2_make_converter/d' tests/test_preconf.py || die
+
+		EPYTEST_DESELECT+=(
+			tests/test_preconf.py::test_cbor2
+			tests/test_preconf.py::test_cbor2_converter
+			tests/test_preconf.py::test_cbor2_converter_unstruct_collection_overrides
+			tests/test_preconf.py::test_cbor2_efficient_enum
+			tests/test_preconf.py::test_cbor2_native_enums
+			tests/test_preconf.py::test_cbor2_unions
+		)
+	fi
 	if ! has_version "dev-python/orjson[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_preconf.py::test_orjson
