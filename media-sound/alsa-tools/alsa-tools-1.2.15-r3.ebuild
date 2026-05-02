@@ -37,10 +37,12 @@ REQUIRED_USE="gtk? ( ${PYTHON_REQUIRED_USE} )"
 # bug #468294
 DEPEND="
 	>=media-libs/alsa-lib-${PV}
+	alsa_cards_ice1712? (
+		gui-libs/gtk:4
+	)
 	fltk? ( x11-libs/fltk:1= )
 	gtk? (
 		dev-libs/glib:2[introspection]
-		gui-libs/gtk:4
 		x11-libs/gtk+:2
 		x11-libs/gtk+:3[introspection]
 		$(python_gen_cond_dep '
@@ -88,7 +90,6 @@ pkg_setup() {
 			hdajackretask
 			hdajacksensetest
 			hwmixvolume
-			$(usev alsa_cards_ice1712 envy24control)
 		)
 		# Perhaps a typo the following && logic?
 		if use alsa_cards_rme32 && use alsa_cards_rme96 ; then
@@ -97,6 +98,12 @@ pkg_setup() {
 
 		# hwmixvolume
 		python-single-r1_pkg_setup
+	fi
+
+	if use alsa_cards_ice1712; then
+		ALSA_TOOLS+=(
+			envy24control
+		)
 	fi
 
 	if use alsa_cards_hdsp || use alsa_cards_hdspm ; then
@@ -149,7 +156,7 @@ src_configure() {
 	for f in ${ALSA_TOOLS[@]} ; do
 		cd "${S}/${f}" || die
 		case "${f}" in
-			echomixer,envy24control,rmedigicontrol )
+			echomixer,rmedigicontrol )
 				econf --with-gtk2
 			;;
 			* )
