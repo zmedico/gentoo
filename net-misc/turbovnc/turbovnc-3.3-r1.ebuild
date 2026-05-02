@@ -159,5 +159,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	use server && optfeature "dbus support" sys-apps/dbus
 }
