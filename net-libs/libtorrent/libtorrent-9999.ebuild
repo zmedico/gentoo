@@ -30,11 +30,10 @@ RDEPEND="
 	net-misc/curl
 	virtual/zlib:=
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
+DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
