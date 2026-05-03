@@ -46,16 +46,6 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
-PATCHES=(
-	"${FILESDIR}"/0001-analyticsoverlay-move-option-to-right-section.patch
-	"${FILESDIR}"/0002-codec2json-move-option-to-right-section.patch
-	"${FILESDIR}"/gst-plugins-bad-1.24.13-va-skip-codecs-with-bad-resolution.patch
-	# bug #970993
-	"${FILESDIR}"/gst-plugins-bad-1.24.13-CVE-2026-2923.patch
-	"${FILESDIR}"/gst-plugins-bad-1.24.13-CVE-2026-3082.patch
-	"${FILESDIR}"/gst-plugins-bad-1.24.13-H265-dos-fix.patch
-)
-
 src_prepare() {
 	default
 	addpredict /dev # Prevent sandbox violations bug #570624
