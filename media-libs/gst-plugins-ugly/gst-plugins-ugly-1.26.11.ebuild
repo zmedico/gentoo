@@ -20,8 +20,3 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
-
-PATCHES=(
-	"${FILESDIR}"/gst-plugins-ugly-1.24.13-ZDI-CAN-28843.patch
-	"${FILESDIR}"/gst-plugins-ugly-1.24.13-ZDI-CAN-28845.patch
-)
