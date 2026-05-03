@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,9 @@ PLOCALES="ca da de eo es fr fur hu ja ka ko nb nl pl pt_BR ro ru sr sv uk vi zh_
 inherit plocale toolchain-funcs
 
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
-HOMEPAGE="https://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
+HOMEPAGE="https://waterlander.net/dos2unix/ https://sourceforge.net/projects/dos2unix/"
 SRC_URI="
-	https://www.xs4all.nl/~waterlan/${PN}/${P/_/-}.tar.gz
+	https://waterlander.net/${PN}/files/${P/_/-}.tar.gz
 	https://downloads.sourceforge.net/${PN}/${P/_/-}.tar.gz
 "
 S=${WORKDIR}/${P/_/-}
