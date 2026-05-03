@@ -424,7 +424,6 @@ src_configure() {
 		-DENABLE_INTERNAL_ASS=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_CURL=OFF
-		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_EXIV2=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
@@ -454,6 +453,7 @@ src_configure() {
 		# Additional find_package on top of core_optional_deps for whatever reason
 		$(cmake_use_find_package vaapi VAAPI)
 		$(cmake_use_find_package vdpau VDPAU)
+		-DENABLE_INTERNAL_DAV1D=OFF
 		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
