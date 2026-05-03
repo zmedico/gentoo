@@ -90,10 +90,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS README.md RELEASE )
 
-PATCHES=(
-	"${FILESDIR}"/gst-plugins-base-1.24.13-ZDI-CAN-28854.patch
-)
-
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
 
