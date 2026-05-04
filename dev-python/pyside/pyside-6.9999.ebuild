@@ -88,16 +88,14 @@ declare -A QT_MODULES=(
 # following one-liner from within "${S}":
 #     $ grep -E '(set|list).*_deps' sources/pyside6/PySide6/Qt*/CMakeLists.txt
 declare -A QT_REQUIREMENTS=(
-	# opengl not unconditionally required but is needed to get the correct build order
-	["3d"]="gui network opengl"
+	["3d"]="gui network"
 	["bluetooth"]="core"
 	["charts"]="core gui widgets"
 	["concurrent"]="core"
 	["dbus"]="core"
 	["designer"]="widgets"
 	["gles2-only"]="gui"
-	# opengl not unconditionally required but is needed to get the correct build order
-	["graphs"]="core network gui qml quick quick3d opengl"
+	["graphs"]="core network gui qml quick quick3d"
 	["gui"]="core"
 	["help"]="widgets"
 	["httpserver"]="core concurrent network websockets"
@@ -111,8 +109,7 @@ declare -A QT_REQUIREMENTS=(
 	["positioning"]="core"
 	["printsupport"]="widgets"
 	["qml"]="network"
-	# opengl not unconditionally required but is needed to get the correct build order
-	["quick"]="gui network qml opengl"
+	["quick"]="gui network qml"
 	["quick3d"]="gui network qml quick"
 	["remoteobjects"]="core network"
 	["scxml"]="core"
@@ -131,6 +128,12 @@ declare -A QT_REQUIREMENTS=(
 	["webview"]="gui quick webengine"
 	["widgets"]="gui"
 	["xml"]="core"
+)
+# Manually reextract these requirements on version bumps by running the
+# following one-liner from within "${S}":
+#     $ grep 'check_qt_opengl' sources/pyside6/PySide6/Qt*/CMakeLists.txt
+declare -a CONDITIONAL_OPENGL=(
+	3d graphs quick
 )
 
 IUSE="${!QT_MODULES[*]} debug doc gles2-only numpy test tools"
@@ -153,7 +156,7 @@ QT_PV="$(ver_cut 1-3)*:6"
 RDEPEND="
 	dev-libs/libxml2:=
 	dev-libs/libxslt
-	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl?,sql?,widgets?,xml?]
+	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl=,sql?,widgets?,xml?]
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 	')
@@ -347,6 +350,10 @@ python_configure_all() {
 					die "${depflag} is required but not enabled"
 				fi
 			done
+			if use opengl && [[ ${CONDITIONAL_OPENGL[@]} =~ ${flag//+} ]]; then
+				# match key in QT_MODULES
+				enable_qt_mod "+opengl"
+			fi
 		fi
 		if [[ "${ENABLED_QT_MODULES[*]}" != *${modules}* ]]; then
 			# modules is whitespace separated. We expand implicitly.
