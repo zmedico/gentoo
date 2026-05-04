@@ -3,6 +3,10 @@
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-05-04)
 # Unkeyworded dependencies
+sys-kernel/dracut test
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-05-04)
+# Unkeyworded dependencies
 sys-fs/mdadm corosync
 
 # Alfred Wingate <parona@protonmail.com> (2026-05-03)
