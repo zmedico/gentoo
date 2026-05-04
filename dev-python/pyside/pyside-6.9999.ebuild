@@ -396,7 +396,7 @@ python_configure_all() {
 		--openssl="${ESYSROOT}/usr/bin/openssl"
 		--qt="$(ver_cut 1-3)"
 		--qtpaths="$(qt6_get_bindir)/qtpaths"
-		--verbose-build
+		--log-level=verbose
 		--parallel="$(makeopts_jobs)"
 		"$(usex debug "--debug" "--relwithdebinfo")"
 		"--$(usex doc "build" "skip")-docs"
