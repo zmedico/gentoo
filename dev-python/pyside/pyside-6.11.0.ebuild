@@ -51,6 +51,7 @@ declare -A QT_MODULES=(
 	["+core"]="Core"
 	["+dbus"]="DBus"
 	["designer"]="Designer"
+	["graphs"]="Graphs" # plus widgets
 	["+gui"]="Gui"
 	["help"]="Help"
 	["httpserver"]="HttpServer"
@@ -97,6 +98,8 @@ declare -A QT_REQUIREMENTS=(
 	["dbus"]="core"
 	["designer"]="widgets"
 	["gles2-only"]="gui"
+	# opengl not unconditionally required but is needed to get the correct build order
+	["graphs"]="core network gui qml quick quick3d opengl"
 	["gui"]="core"
 	["help"]="widgets"
 	["httpserver"]="core concurrent network websockets"
@@ -161,6 +164,7 @@ RDEPEND="
 	bluetooth? ( =dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	charts? ( =dev-qt/qtcharts-${QT_PV} )
 	designer? ( =dev-qt/qttools-${QT_PV}[designer,widgets,gles2-only=] )
+	graphs? ( =dev-qt/qtgraphs-${QT_PV}[quick3d] )
 	gui? (
 		=dev-qt/qtbase-${QT_PV}[gui,jpeg(+)]
 		x11-libs/libxkbcommon
@@ -313,6 +317,8 @@ python_prepare_all() {
 			linux
 		[QtCore::qrangemodel_test]
 			linux
+		[QtGraphs::qgraphs_numpy_test]
+			linux
 		EOF
 	fi
 }
@@ -366,6 +372,7 @@ python_configure_all() {
 		use opengl && ENABLED_QT_MODULES+=( OpenGLWidgets )
 		use pdfium && ENABLED_QT_MODULES+=( PdfWidgets )
 		use quick && ENABLED_QT_MODULES+=( QuickWidgets )
+		use graphs && ENABLED_QT_MODULES+=( GraphsWidgets ) # requires QuickWidgets
 		use svg && ENABLED_QT_MODULES+=( SvgWidgets )
 		use webengine && ENABLED_QT_MODULES+=( WebEngineWidgets )
 	fi
