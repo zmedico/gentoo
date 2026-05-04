@@ -126,8 +126,7 @@ declare -A QT_REQUIREMENTS=(
 	["testlib"]="widgets"
 	["uitools"]="widgets"
 	["webchannel"]="core"
-	# quick not unconditionally required but is needed to get the correct build order
-	["webengine"]="core gui network printsupport quick webchannel"
+	["webengine"]="core gui network printsupport webchannel"
 	["websockets"]="network"
 	["webview"]="gui quick webengine"
 	["widgets"]="gui"
