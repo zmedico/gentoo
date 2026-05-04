@@ -154,6 +154,8 @@ done
 # Minimal supported version of Qt.
 QT_PV="$(ver_cut 1-3)*:6"
 
+# USE="tools" is heavily automagic based on what other qt tools are installed at build time.
+
 # WebEngine needs sound support, so enable either pulseaudio or alsa
 RDEPEND="
 	dev-libs/libxml2:=
