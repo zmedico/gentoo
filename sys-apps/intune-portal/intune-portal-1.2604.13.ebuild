@@ -37,12 +37,6 @@ RDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
-
-	|| (
-		www-client/microsoft-edge
-		www-client/microsoft-edge-beta
-		www-client/microsoft-edge-dev
-	)
 "
 
 QA_PREBUILT="*"
