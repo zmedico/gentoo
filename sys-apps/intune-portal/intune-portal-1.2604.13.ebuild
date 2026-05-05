@@ -55,6 +55,14 @@ src_unpack() {
 	unpack_deb ${A}
 }
 
+src_prepare() {
+	default
+	hprefixify \
+		lib/systemd/*/* \
+		usr/share/applications/*.desktop \
+		usr/lib/tmpfiles.d/intune.conf
+}
+
 src_install() {
 	exeinto "${DIR}"/bin
 	newexe $(prefixify_ro "${FILESDIR}"/wrapper) intune-portal
