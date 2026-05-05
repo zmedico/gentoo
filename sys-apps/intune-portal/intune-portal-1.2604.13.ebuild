@@ -60,6 +60,7 @@ src_prepare() {
 src_install() {
 	exeinto "${DIR}"/bin
 	newexe $(prefixify_ro "${FILESDIR}"/wrapper) intune-portal
+	dosym -r "${DIR}"/bin/intune-portal /usr/bin/intune-portal
 	dosym intune-portal "${DIR}"/bin/intune-agent
 	dosym intune-portal "${DIR}"/bin/intune-daemon
 
