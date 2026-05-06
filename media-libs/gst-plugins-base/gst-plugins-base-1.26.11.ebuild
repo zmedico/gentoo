@@ -94,6 +94,14 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-tpm )"
 DOCS=( AUTHORS NEWS README.md RELEASE )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
+PATCHES=(
+	# bug #974283
+	"${FILESDIR}"/gst-plugins-base-1.26.11-GStreamer-SA-2026-0014.patch
+	# bug #974285
+	"${FILESDIR}"/gst-plugins-base-1.26.11-GStreamer-SA-2026-0019.patch
+	"${FILESDIR}"/gst-plugins-base-1.26.11-GStreamer-SA-2026-0023.patch
+)
+
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
 
