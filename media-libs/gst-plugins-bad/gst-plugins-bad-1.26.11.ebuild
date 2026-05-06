@@ -59,6 +59,12 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
 PATCHES=(
 	"${FILESDIR}"/gst-plugins-bad-1.26.11-respect-webrtcdsp-disable.patch
+	# bug #974283
+	"${FILESDIR}"/gst-plugins-bad-1.26.11-GStreamer-SA-2026-0014.patch
+	# bug #974284
+	"${FILESDIR}"/gst-plugins-bad-1.26.11-GStreamer-SA-2026-0013.patch
+	"${FILESDIR}"/gst-plugins-bad-1.26.11-GStreamer-SA-2026-0015.patch
+	"${FILESDIR}"/gst-plugins-bad-1.26.11-GStreamer-SA-2026-0017.patch
 )
 
 src_prepare() {
