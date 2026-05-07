@@ -22,15 +22,18 @@ REQUIRED_USE="
 	flatpak? ( git )
 "
 
-# When bumping, pay attention to all the included plugins/*/meson.build (and other) build files and the requirements within.
-# `grep -rI dependency * --include='meson.build'` can give a good initial idea for external deps and their double checking.
-# The listed RDEPEND order should roughly match that output as well, with toplevel one first then sorted by file path.
-# Most plugins have no extra requirements and default to enabled; we need to handle the ones with extra requirements. Many of
-# them have optional runtime dependencies, for which we try to at least notify the user via DOC_CONTENTS (but not all small
-# things); `grep -rI -e 'command-pattern.*=' -e 'push_arg'` can give a (spammy) idea, plus python imports in try/except.
+# When bumping, pay attention to all the included plugins/*/meson.build (and other) build files and the requirements
+# within. `grep -rI dependency * --include='meson.build'` can give a good initial idea for external deps and their
+# double checking. The listed RDEPEND order should roughly match that output as well, with toplevel one first then
+# sorted by file path.
+# Most plugins have no extra requirements and default to enabled; we need to handle the ones with extra requirements.
+# Many of them have optional runtime dependencies, for which we try to at least notify the user via DOC_CONTENTS (but
+# not all small things); `grep -rI -e 'command-pattern.*=' -e 'push_arg'` can give a (spammy) idea, plus python imports
+# in try/except.
 
 # Editorconfig needs old pcre, with vte migrating away, might want it optional or ported to pcre2?
-# An introspection USE flag of a dep is required if any introspection based language plugin wants to use it (grep for gi.repository). Last full check at 3.28.4
+# An introspection USE flag of a dep is required if any introspection based language plugin wants to use it (grep for
+# gi.repository).
 
 RDEPEND="
 	>=dev-libs/glib-2.85:2[introspection]
@@ -72,8 +75,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # TODO: runtime ctags path finding..
 
-# desktop-file-utils required for tests, but we have it in deptree for xdg update-desktop-database anyway, so be explicit and unconditional
-# appstream-glib needed for validation with appstream-util with FEATURES=test
+# desktop-file-utils required for tests, but we have it in deptree for xdg update-desktop-database anyway, so be
+# explicit and unconditional.
+# appstream-glib needed for validation with appstream-util with FEATURES=test.
 BDEPEND="
 	doc? (
 		$(python_gen_cond_dep '
@@ -112,12 +116,14 @@ support.
 * net-libs/nodejs[npm] for integration with the NPM package system.
 '
 # FIXME: Package codespell and mention here
-# FIXME: Package gnome-code-assistance and mention here, or maybe USE flag and default enable because it's rather important
+# FIXME: Package gnome-code-assistance and mention here, or maybe USE flag and default enable because it's rather
+# important.
 # eslint for additional diagnostics in JavaScript files (what package has this? At least something via NPM..)
-# jhbuild support
+# jhbuild support.
 # rust support via rust-analyzer; Go via go-langserver
 # autotools stuff for autotools plugin; gtkmm/autoconf-archive for C++ template
-# gjs/gettext/mono/PHPize stuff, but most of these are probably installed for other reasons anyways, when needed inside IDE
+# gjs/gettext/mono/PHPize stuff, but most of these are probably installed for other reasons anyways, when needed inside
+# IDE.
 # stylelint for stylesheet (CSS and co) linting
 # gvls for vala language-server integration
 
@@ -159,7 +165,7 @@ src_configure() {
 		-Dplugin_codespell=true
 		-Dplugin_code_index=true
 		-Dplugin_copyright=true
-		-Dplugin_css-preview=true
+		-Dplugin_css_preview=true
 		-Dplugin_ctags=true
 		-Dplugin_deviced=false # libdeviced not packaged?
 		$(meson_use d-spy plugin_dspy)
@@ -247,7 +253,9 @@ src_install() {
 		rm "${ED}"/usr/share/doc/gnome-builder/en/objects.inv || die
 		# custom docdir in build system, blocked by https://github.com/mesonbuild/meson/issues/825
 		mv "${ED}"/usr/share/doc/gnome-builder/en "${ED}"/usr/share/doc/${PF}/html || die
-		# _sources subdir left in on purpose, as HTML links to the rst files as "View page source". Additionally default docompress exclusion of /html/ already ensures they aren't compressed, thus linkable as-is.
+		# _sources subdir left in on purpose, as HTML links to the rst files as "View page source".
+		# Additionally default docompress exclusion of /html/ already ensures they aren't compressed,
+		# thus linkable as-is.
 		rmdir "${ED}"/usr/share/doc/gnome-builder/ || die
 	fi
 	readme.gentoo_create_doc
