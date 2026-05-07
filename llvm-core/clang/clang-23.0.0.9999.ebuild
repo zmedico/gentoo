@@ -203,6 +203,7 @@ get_distribution_components() {
 			clang-refactor
 			clang-repl
 			clang-scan-deps
+			clang-ssaf-analyzer
 			clang-ssaf-format
 			clang-ssaf-linker
 			clang-sycl-linker
