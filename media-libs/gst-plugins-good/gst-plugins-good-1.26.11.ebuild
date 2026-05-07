@@ -28,6 +28,14 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-tpm )"
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tpm.asc
 
+PATCHES=(
+	# bug #974286
+	"${FILESDIR}"/gst-plugins-good-1.26.11-GStreamer-SA-2026-0016.patch
+	"${FILESDIR}"/gst-plugins-good-1.26.11-GStreamer-SA-2026-0018.patch
+	"${FILESDIR}"/gst-plugins-good-1.26.11-GStreamer-SA-2026-0021.patch
+	"${FILESDIR}"/gst-plugins-good-1.26.11-GStreamer-SA-2026-0022.patch
+)
+
 multilib_src_configure() {
 	# gst/matroska can use bzip2
 	GST_PLUGINS_NOAUTO="bz2"
