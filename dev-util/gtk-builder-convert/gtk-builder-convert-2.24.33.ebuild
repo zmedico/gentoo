@@ -27,7 +27,8 @@ BDEPEND="${PYTHON_DEPS}
 src_configure() { :; }
 
 src_compile() {
-	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl docs/reference/gtk/gtk-builder-convert.xml || die
+	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl \
+		docs/reference/gtk/gtk-builder-convert.xml || die
 }
 
 src_install() {
