@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
@@ -39,7 +39,7 @@ DEPEND="
 "
 # >=dev-libs/libgdata-0.17.13:0=[gnome-online-accounts] # Upstream left this commented in meson.build. Probably comes back with the next version
 
-# tracker-miners gschema used at runtime.
+# localsearch gschema used at runtime.
 RDEPEND="${DEPEND}
 	upnp-av? ( net-libs/dleyna:1.0= )
 	app-misc/localsearch:3
