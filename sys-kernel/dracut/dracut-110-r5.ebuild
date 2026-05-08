@@ -106,6 +106,7 @@ PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
 	"${FILESDIR}"/${PN}-110-acct-user-group-gentoo.patch
+	"${FILESDIR}"/${PN}-110-set-defaults.patch
 	"${FILESDIR}"/${P}-dash-printf.patch
 )
 
