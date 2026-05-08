@@ -135,6 +135,8 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
+	"${FILESDIR}/php-8.3.31-libgd-test-fixes.patch"
+	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
