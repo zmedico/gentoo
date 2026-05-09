@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-05-09)
+# Unmaintained, bad quality packages.  No support for Python 3.13.
+# No reverse dependencies.
+# Removal on 2026-06-08.  Bug #952373.
+dev-python/js2py
+dev-python/pyjsparser
+
+# Michał Górny <mgorny@gentoo.org> (2026-05-09)
 # Discontinued upstream, no support for Python 3.14, no revdeps left.
 # Removal on 2026-06-08.  Bug #974029.
 net-im/telepathy-logger
