@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -147,6 +147,9 @@ src_configure() {
 	# we pretend to allow it, without actually allowing it to read or write.
 	# https://bugs.gentoo.org/821328
 	addpredict /dev/bus/usb
+	# gnupg tries to create directories and run all of: gpg, gpg-agent,
+	# scdaemon, gpgconf, gpgsm
+	addpredict /run/user/$(id -u)/gnupg
 
 	econf "${myconf[@]}"
 }

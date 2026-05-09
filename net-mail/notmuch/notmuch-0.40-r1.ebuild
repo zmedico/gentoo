@@ -158,6 +158,9 @@ src_configure() {
 	# we pretend to allow it, without actually allowing it to read or write.
 	# https://bugs.gentoo.org/821328
 	addpredict /dev/bus/usb
+	# gnupg tries to create directories and run all of: gpg, gpg-agent,
+	# scdaemon, gpgconf, gpgsm
+	addpredict /run/user/$(id -u)/gnupg
 
 	econf "${myconf[@]}"
 }
