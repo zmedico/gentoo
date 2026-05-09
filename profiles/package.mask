@@ -42,6 +42,11 @@
 # feel free to take it and update it. Removal in one month. Bug #974452
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 
+# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
+# No longer developed by upstream, does not work with current gnome-shell
+# versions. Removal in one month. Bug #974453
+gnome-extra/gnome-shell-extension-bluetooth-quick-connect
+
 # Michał Górny <mgorny@gentoo.org> (2026-05-09)
 # Unmaintained upstream and broken with Python 3.13.
 # Removal on 2026-06-08.  Bug #952342.
