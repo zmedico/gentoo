@@ -38,7 +38,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	audio? (
-		>media-libs/portaudio-18
+		>media-libs/portaudio-18-r0
 		media-libs/alsa-lib
 	)
 	$(python_gen_cond_dep '
