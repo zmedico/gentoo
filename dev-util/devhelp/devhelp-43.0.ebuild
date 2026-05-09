@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="An API documentation browser for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Devhelp"
+HOMEPAGE="https://gitlab.gnome.org/Archive/devhelp"
 
 LICENSE="GPL-3+ CC-BY-SA-4.0"
 SLOT="0/3-6" # subslot = 3-(libdevhelp-3 soname version)
