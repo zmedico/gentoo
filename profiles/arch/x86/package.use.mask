@@ -226,6 +226,7 @@ kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
 kde-apps/umbrello php
 kde-plasma/plasma-nm openconnect
+net-irc/quassel urlpreview
 net-misc/seafile-client shibboleth
 net-p2p/ktorrent rss
 sci-physics/root qt6
