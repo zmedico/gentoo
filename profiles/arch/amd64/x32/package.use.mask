@@ -105,4 +105,3 @@ dev-python/qtpy test
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32 (bug #932192).
 dev-qt/qtdeclarative jit
-dev-qt/qtscript jit
