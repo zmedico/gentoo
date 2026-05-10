@@ -137,6 +137,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/974448
+	append-cflags -std=gnu17
+
 	tc-export AR CC CXX PKG_CONFIG
 
 	local myconf=(

@@ -124,6 +124,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/974448
+	append-cflags -std=gnu17
+
 	python_setup # For sphinx
 
 	tc-export CC CXX
