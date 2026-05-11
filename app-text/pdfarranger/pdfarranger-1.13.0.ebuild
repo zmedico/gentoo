@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 optfeature xdg desktop
 
 DESCRIPTION="Merge or split pdfs; rearrange, rotate, crop pages"
