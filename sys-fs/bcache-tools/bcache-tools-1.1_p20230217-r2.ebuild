@@ -17,9 +17,9 @@ fi
 
 DESCRIPTION="Tools for bcache"
 HOMEPAGE="https://bcache.evilpiepirate.org/ https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/"
+LICENSE="GPL-2"
 
 SLOT="0"
-LICENSE="GPL-2"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
