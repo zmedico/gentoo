@@ -39,14 +39,12 @@ pkg_setup() {
 }
 
 src_configure() {
-	MULTIBUILD_VARIANTS=(
-		"clspv--"
-		"clspv64--"
-	)
+	MULTIBUILD_VARIANTS=()
 
 	use spirv && MULTIBUILD_VARIANTS+=(
-		"spirv-mesa3d-"
-		"spirv64-mesa3d-"
+		"spirv-mesa-mesa3d"
+		"spirv64-mesa-mesa3d"
+		"spirv64-unknown-vulkan"  # formerly clspv
 	)
 	use video_cards_nvidia && MULTIBUILD_VARIANTS+=(
 		"nvptx64-nvidia-cuda"
