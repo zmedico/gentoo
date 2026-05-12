@@ -294,6 +294,7 @@ get_distribution_components() {
 			llvm-dwp
 			llvm-exegesis
 			llvm-extract
+			llvm-extract-bundle-entry
 			llvm-gpu-loader
 			llvm-gsymutil
 			llvm-ifs
