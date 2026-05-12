@@ -159,6 +159,7 @@ src_configure() {
 		--configdir="${EPREFIX}"/etc
 		--cxx17
 		--freedesktop
+		--no-execstack
 		--noconfirm
 		--optimize
 		--with-backends=$(IFS=','; echo "${backends[*]}")
