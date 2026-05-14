@@ -51,7 +51,7 @@ BDEPEND="
 distutils_enable_tests unittest
 
 src_test() {
-	QT_QPA_PLATFORM=minimal virtx distutils-r1_src_test
+	virtx distutils-r1_src_test
 }
 
 src_install() {
