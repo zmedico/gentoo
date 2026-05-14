@@ -976,7 +976,7 @@ src_prepare() {
 
 	# USE=system-*
 	if ! use system-harfbuzz; then
-		keeplibs+=( third_party/harfbuzz-ng )
+		keeplibs+=( third_party/harfbuzz )
 	fi
 
 	if ! use system-icu; then
