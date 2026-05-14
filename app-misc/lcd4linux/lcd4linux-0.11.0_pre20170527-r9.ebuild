@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -153,6 +153,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Fix #943826
+	append-cflags -std=gnu17
+
 	# Enable all users enabled lcd devices
 	local myeconfargs_lcd_devices
 	for lcd_device in "${IUSE_LCD_DEVICES[@]}"; do
