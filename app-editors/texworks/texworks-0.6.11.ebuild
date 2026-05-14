@@ -51,6 +51,12 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	# Clean cruft, also containing obsolete cmake files
+	rm -r .github || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-Wno-dev
