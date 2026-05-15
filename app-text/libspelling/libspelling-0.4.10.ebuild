@@ -16,7 +16,7 @@ IUSE="gtk-doc sysprof vala"
 
 RDEPEND="
 	dev-libs/glib:2
-	>=gui-libs/gtk-4.15.5:4
+	>=gui-libs/gtk-4.15.5:4[introspection]
 	>=gui-libs/gtksourceview-5.10.0:5
 	app-text/enchant:2
 	dev-libs/icu:=
