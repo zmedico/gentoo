@@ -57,6 +57,11 @@ src_install() {
 
 	meson_src_install
 
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/gom-1.0 "${ED}"/usr/share/gtk-doc/html/ || die
+	fi
+
 	if use python; then
 		python_foreach_impl python_domodule bindings/python/gi
 	fi
