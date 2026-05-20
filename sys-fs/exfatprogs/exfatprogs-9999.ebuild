@@ -9,6 +9,7 @@ HOMEPAGE="https://github.com/exfatprogs/exfatprogs"
 if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/exfatprogs/exfatprogs.git"
+	EGIT_BRANCH="exfat-next"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/hclee.asc
 	inherit verify-sig
@@ -26,6 +27,9 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="!sys-fs/exfat-utils"
+DEPEND="
+	sys-apps/util-linux
+	elibc_musl? ( sys-libs/fts-standalone )"
 
 src_prepare() {
 	default
