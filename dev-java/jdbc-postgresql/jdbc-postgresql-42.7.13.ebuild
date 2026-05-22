@@ -68,3 +68,8 @@ JAVA_SRC_DIR=( src/main ! -name 'SSPIClient.java' ! -path '**/java11/**' -path '
 JAVA_TEST_GENTOO_CLASSPATH="asm byte-buddy junit-4 junit-5"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
+
+src_install() {
+	JAVA_SRC_DIR=( src/main/{java,java11,version} ) # https://bugs.gentoo.org/974911
+	java-pkg-simple_src_install
+}
