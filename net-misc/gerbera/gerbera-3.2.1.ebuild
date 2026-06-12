@@ -3,14 +3,7 @@
 
 EAPI=8
 
-DOCS_BUILDER="sphinx"
-DOCS_DIR="doc"
-DOCS_AUTODOC=0
-
-PYTHON_COMPAT=( python3_{11..14} )
-
-# python-any-r1 is inherited first because docs.eclass sources it, and cmake.eclass exports phases.
-inherit python-any-r1 cmake docs flag-o-matic linux-info
+inherit cmake flag-o-matic linux-info
 
 DESCRIPTION="UPnP Media Server"
 HOMEPAGE="https://gerbera.io"
@@ -26,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug doc +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib test"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -55,13 +48,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? (
-		${PYTHON_DEPS}
-		$(python_gen_any_dep '
-			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
-		')
-		media-gfx/graphviz
-	)
 	test? ( dev-cpp/gtest )
 "
 
@@ -93,11 +79,6 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-	docs_compile
 }
 
 src_install() {
