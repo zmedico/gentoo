@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib test"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer icu +javascript +magic +matroska mysql systemd +taglib test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,6 +40,7 @@ RDEPEND="
 	exiv2? ( media-gfx/exiv2:= )
 	ffmpeg? ( media-video/ffmpeg:= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer[png] )
+	icu? ( dev-libs/icu:= )
 	javascript? ( dev-lang/duktape:= )
 	magic? ( sys-apps/file )
 	matroska? ( media-libs/libmatroska:= )
@@ -66,6 +67,7 @@ src_configure() {
 		-DWITH_EXIF=$(usex exif)
 		-DWITH_EXIV2=$(usex exiv2)
 		-DWITH_FFMPEGTHUMBNAILER=$(usex ffmpegthumbnailer)
+		-DWITH_ICU=$(usex icu)
 		-DWITH_INOTIFY=ON
 		-DWITH_JS=$(usex javascript)
 		-DWITH_LASTFM=OFF
