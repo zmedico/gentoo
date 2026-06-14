@@ -40,6 +40,7 @@ DEPEND="
 RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=( LICENSE.txt NOTICE.txt RELEASE-NOTES.txt )
+PATCHES=( "${FILESDIR}"/commons-csv-1.14.1-skipFailingTest.patch )
 
 JAVA_CLASSPATH_EXTRA="commons-codec commons-io findbugs-annotations"
 JAVA_GENTOO_CLASSPATH_EXTRA=:"${DISTDIR}/h2-${H2V}.jar"
