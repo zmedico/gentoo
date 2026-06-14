@@ -5,7 +5,6 @@ EAPI=9
 
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
-MAVEN_ID="org.apache.commons:commons-csv:1.14.1"
 
 inherit java-pkg-2 java-pkg-simple junit5 verify-sig
 
