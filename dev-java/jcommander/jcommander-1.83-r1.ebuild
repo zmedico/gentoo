@@ -22,12 +22,11 @@ DEPEND="
 	test? (
 		>=dev-java/jackson-annotations-2.20:0
 		>=dev-java/jackson-core-2.20.0:0
+		>=dev-java/slf4j-simple-2.0.3:0
 		>=dev-java/testng-7.11.0:0
 	)
 "
 RDEPEND=">=virtual/jre-1.8:* "
-
-PATCHES=( "${FILESDIR}/jcommander-1.83-skipFailingTest.patch" )
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="jackson-annotations jackson-core slf4j-simple testng"
@@ -36,7 +35,6 @@ JAVA_TEST_RUN_ONLY="src/test/resources/testng.xml"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
-#	default #bug #780585
 	java-pkg-2_src_prepare
 	java-pkg_clean
 
