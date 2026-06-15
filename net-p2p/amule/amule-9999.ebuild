@@ -7,21 +7,20 @@ WX_GTK_VER="3.2-gtk3"
 inherit cmake flag-o-matic wxwidgets xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/amule-project/amule"
+	EGIT_REPO_URI="https://github.com/amule-org/amule"
 	inherit git-r3
 else
-	MY_P="${PN/m/M}-${PV}"
-	SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
-	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/amule-org/amule/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
-HOMEPAGE="https://www.amule.org/"
+HOMEPAGE="https://amule-org.github.io/"
 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="daemon debug geoip +gui nls remote stats test upnp"
+# Make the package useful and simplify dependency management
 REQUIRED_USE="|| ( daemon gui remote )"
 
 RESTRICT="!test? ( test )"
@@ -55,8 +54,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.4.0-disable-version-check.patch"
-	"${FILESDIR}/${PN}-2.4.0-use-xdg-open-as-preview-default.patch"
+	"${FILESDIR}/${PN}-3.0.0-disable-version-check.patch"
+	"${FILESDIR}/${PN}-3.0.0-use-xdg-open-as-preview-default.patch"
 )
 
 src_configure() {
