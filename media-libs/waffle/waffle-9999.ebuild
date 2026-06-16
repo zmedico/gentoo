@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	wayland? ( dev-libs/wayland-protocols )
 	X? ( >=x11-base/xcb-proto-1.8-r3 )
+	test? ( dev-util/cmocka )
 "
 BDEPEND="
 	app-text/docbook-xml-dtd:4.2
@@ -64,6 +65,8 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	addwrite /dev/dri/
+
 	if use wayland; then
 		export XDG_RUNTIME_DIR="$(mktemp -p $(pwd) -d xdg-runtime-XXXXXX)"
 
