@@ -44,19 +44,13 @@ src_prepare() {
 		-e '\@^#include "net/udns/udns_.*.c"@d' \
 		-i src/net/udns_library.cc src/net/udns_library.h src/net/udns_resolver.cc || die
 
-	if [[ ${CHOST} != *-darwin* ]]; then
-		# syslibroot is only for macos, change to sysroot for others
-		sed -i 's/Wl,-syslibroot,/Wl,--sysroot,/' "${S}/scripts/common.m4" || die
-	fi
-	eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
 		LIBS="-ludns"
-		--enable-aligned
 		$(use_enable debug)
-		--with-posix-fallocate
 	)
 
 	econf "${myeconfargs[@]}"
