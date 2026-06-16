@@ -270,6 +270,16 @@ src_prepare() {
 		rm ext/dba/tests/gh19706.phpt
 	fi
 
+	local virt=$(systemd-detect-virt 2>/dev/null)
+	if [[ ${virt} == systemd-nspawn ]]; then
+		# If we are in a container where certain system calls can fail
+		# by design, don't test their PHP wrappers (bug 977402).
+		einfo "systemd-nspawn detected, skipping fsync/nice tests"
+		rm ext/standard/tests/file/fdatasync.phpt \
+			ext/standard/tests/file/fsync.phpt \
+			ext/standard/tests/general_functions/proc_nice_basic.phpt \
+			|| die
+	fi
 }
 
 src_configure() {
