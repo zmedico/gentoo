@@ -40,9 +40,9 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	mhash mssql mysql mysqli nls
 	odbc +opcache-jit pcntl pdo +phar +posix postgres png
 	qdbm readline selinux +session session-mm sharedmem
-	+simplexml snmp soap sockets sodium spell sqlite ssl
-	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode
-	valgrind webp +xml xmlreader xmlwriter xpm xslt zip zlib"
+	+simplexml snmp soap sockets sodium spell sqlite ssl sysvipc
+	systemd test test-full tidy +tokenizer tokyocabinet truetype
+	unicode valgrind webp +xml xmlreader xmlwriter xpm xslt zip zlib"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
@@ -721,7 +721,7 @@ src_test() {
 	#
 	# One -n applies to the top-level "php", while the other applies
 	# to any sub-php that get invoked by the test runner.
-	SKIP_IO_CAPTURE_TESTS=1 SKIP_PERF_SENSITIVE=1 REPORT_EXIT_STATUS=1 \
+	SKIP_SLOW_TESTS=$(usex test-full 0 1) SKIP_IO_CAPTURE_TESTS=1 SKIP_PERF_SENSITIVE=1 REPORT_EXIT_STATUS=1 \
 		"${TEST_PHP_EXECUTABLE}" -n \
 		"${WORKDIR}/sapis-build/cli/run-tests.php" --offline -n -q \
 		-d "session.save_path=${T}" \
