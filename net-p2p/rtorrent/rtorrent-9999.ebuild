@@ -65,11 +65,6 @@ src_prepare() {
 	# https://github.com/rakshasa/rtorrent/issues/332
 	cp "${FILESDIR}"/rtorrent.1 "${S}"/doc/ || die
 
-	if [[ ${CHOST} != *-darwin* ]]; then
-		# syslibroot is only for macos, change to sysroot for others
-		sed -i 's/Wl,-syslibroot,/Wl,--sysroot,/' "${S}/scripts/common.m4" || die
-	fi
-
 	eautoreconf
 }
 
@@ -110,7 +105,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "This release could introduce new commands to configure RTorrent."
+	einfo "This release could deprecate or introduce commands to configure RTorrent."
 	einfo "Please read the release notes before restarting:"
 	einfo "https://github.com/rakshasa/rtorrent/releases"
 	einfo ""
