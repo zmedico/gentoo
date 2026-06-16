@@ -163,6 +163,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
+	"${FILESDIR}/${P}-fix-plasma-apply-lookandfeel.patch" # in 6.7.1
 )
 
 src_prepare() {
