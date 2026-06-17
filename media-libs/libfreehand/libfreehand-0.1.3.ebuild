@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libfreehand.git"
 	inherit autotools git-r3
 else
@@ -24,8 +24,7 @@ RDEPEND="
 	media-libs/lcms
 	virtual/zlib:=
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	dev-libs/boost
 	dev-libs/icu
 	test? ( dev-util/cppunit )
@@ -40,7 +39,7 @@ BDEPEND="
 src_prepare() {
 	default
 
-	if [[ ${PV} == *9999 ]]; then
+	if [[ ${PV} == *9999* ]]; then
 		mkdir -p m4 || die
 		eautoreconf
 	fi
