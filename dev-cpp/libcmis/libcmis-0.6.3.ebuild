@@ -35,6 +35,8 @@ BDEPEND="
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-buildsys.patch ) # in git master
+
 src_prepare() {
 	default
 	eautoreconf
