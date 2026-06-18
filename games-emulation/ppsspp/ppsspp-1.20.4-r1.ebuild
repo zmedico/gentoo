@@ -28,6 +28,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=media-libs/sdl2-ttf-2.24.0
+	>=media-video/ffmpeg-5:=
 	app-arch/snappy:=
 	app-arch/zstd:=
 	dev-libs/libzip:=
@@ -35,7 +36,6 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video,wayland?]
 	media-libs/libsdl2[joystick]
-	media-video/ffmpeg:=
 	virtual/opengl
 	virtual/zlib:=
 "
