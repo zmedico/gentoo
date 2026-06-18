@@ -50,7 +50,7 @@ src_test() {
 		# https://codeberg.org/emacs-jabber/emacs-jabber/issues/155
 		[[ ${tests[t]} = *-mam.el ]] && unset "tests[t]"
 	done
-	elisp-test-ert tests -L lisp ${tests[@]/#/-l }
+	elisp-test-ert tests -L lisp "${tests[@]/#/--load=}"
 }
 
 src_install() {
