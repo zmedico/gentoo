@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="ISC"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 IUSE="examples"
 
 DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
