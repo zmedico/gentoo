@@ -37,6 +37,7 @@ src_compile() {
 	local MBED_FLAGS
 	MBED_FLAGS=$("$(tc-getPKG_CONFIG)" --cflags --libs mbedcrypto-3) || die
 	emake \
+		CC="$(tc-getCC)" \
 		EMACS_CMD="${EMACS} \
 			-L ${EPREFIX}${SITELISP}/fsm \
 			-L ${EPREFIX}${SITELISP}/keymap-popup" \
