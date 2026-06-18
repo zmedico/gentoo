@@ -17,6 +17,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch
 	"${FILESDIR}"/${P}-c23.patch
 	"${FILESDIR}"/${P}-fortify.patch
+	"${FILESDIR}"/${PN}-2.12-selinux-tests.patch
 )
 
 DOCS=( README )
