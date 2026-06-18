@@ -50,13 +50,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default
-
-	# useful soname (https://github.com/any1/neatvnc/issues/124)
-	sed -i -e "s/'0.0.0'/'0.10'/" meson.build || die
-}
-
 src_configure() {
 	local emesonargs=(
 		$(meson_use examples)
