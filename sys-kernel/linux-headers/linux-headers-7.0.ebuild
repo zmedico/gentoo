@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Notes at https://wiki.gentoo.org/wiki/Project:Toolchain/sys-kernel/linux-headers
+
 ETYPE="headers"
 H_SUPPORTEDARCH="alpha amd64 arc arm arm64 csky hexagon hppa loong m68k microblaze mips nios2 openrisc ppc ppc64 riscv s390 sh sparc x86 xtensa"
 inherit kernel-2
