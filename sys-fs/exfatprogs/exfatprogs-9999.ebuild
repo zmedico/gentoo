@@ -40,3 +40,8 @@ src_prepare() {
 
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
+
+src_configure() {
+	# bash for https://github.com/exfatprogs/exfatprogs/pull/372
+	CONFIG_SHELL="${BROOT}"/bin/bash econf
+}
