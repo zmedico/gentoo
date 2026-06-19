@@ -31,6 +31,9 @@ RDEPEND="
 	elibc_musl? ( sys-libs/fts-standalone )
 "
 DEPEND="${RDEPEND}"
+BDEPEND+="
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
