@@ -12,7 +12,7 @@ S=${WORKDIR}/${P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~ppc64 ~riscv x86"
 IUSE="+bzip2"
 
 RDEPEND="
