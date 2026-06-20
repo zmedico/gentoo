@@ -24,7 +24,9 @@ IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	dev-python/docutils
+	$(python_gen_cond_dep '
+		dev-python/docutils[${PYTHON_USEDEP}]
+	')
 	${PYTHON_DEPS}
 "
 DEPEND="
