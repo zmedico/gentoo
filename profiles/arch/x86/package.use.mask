@@ -4,6 +4,7 @@
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-07-07)
 # New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
 dev-util/ccache http
+sci-astronomy/stellarium telescope
 
 # Brett A C Sheffield <bacs@librecast.net> (2026-06-23)
 # virtual/pandoc deps are not keyworded here
