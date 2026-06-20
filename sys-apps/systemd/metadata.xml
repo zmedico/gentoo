@@ -21,6 +21,7 @@
 		<flag name="gcrypt">Enable use of <pkg>dev-libs/libgcrypt</pkg> for various features</flag>
 		<flag name="homed">Enable portable home directories</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
+		<flag name="imds">Enable IMDS (Instance Metadata Service)</flag>
 		<flag name="importd">Enable import daemon</flag>
 		<flag name="kernel-install">Enable kernel-install</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
