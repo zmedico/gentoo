@@ -8,6 +8,7 @@ app-misc/fastfetch efl
 # Pacho Ramos <pacho@gentoo.org> (2026-05-09)
 # dev-libs/appstream not keyworded, bug #977775
 app-misc/media-player-info test
+dev-util/meld test
 
 # Jaco Kroon <jkroon@gentoo.org> (2026-05-04)
 # media-libs/libyuv is not keyworded
