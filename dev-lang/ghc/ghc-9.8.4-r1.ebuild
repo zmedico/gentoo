@@ -629,6 +629,9 @@ src_prepare() {
 	# <https://gitlab.haskell.org/ghc/ghc/-/issues/25662>
 	eapply "${FILESDIR}/${PN}-9.12.2-hp2ps-c23-compat.patch"
 
+	# <https://gitlab.haskell.org/ghc/ghc/-/issues/26810>
+	eapply "${FILESDIR}/${PN}-9.8.4-fix-sphinx-9.patch"
+
 	bump_libs
 
 	eapply_user
@@ -698,8 +701,6 @@ src_configure() {
 		esac
 	done
 
-
-
 	### Prepare hadrian build settings files
 
 	mkdir _build
@@ -713,7 +714,7 @@ src_configure() {
 	# installed to the system)
 	echo "stage1.*.cabal.configure.opts += --disable-library-stripping" >> _build/hadrian.settings
 
-    ### Gather configuration variables for GHC
+	### Gather configuration variables for GHC
 
 	# Get ghc from the binary
 	# except when bootstrapping we just pick ghc up off the path
@@ -767,9 +768,6 @@ src_configure() {
 
 	einfo "Final _build/hadrian.settings:"
 	cat _build/hadrian.settings || die
-
-
-
 
 	### Bootstrap Hadrian, then final configure (should this be here or in src_compile?)
 
