@@ -108,8 +108,7 @@ IM_REV="-r2"
 INIT_REV="-r1"
 
 src_compile() {
-	LC_ALL=C eant
-	use doc && LC_ALL=C eant javadoc
+	LC_ALL=C eant deploy $(usev doc javadoc)
 }
 
 src_test() {
