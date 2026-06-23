@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,3 +21,10 @@ BDEPEND="
 "
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
+
+src_install() {
+	meson_src_install
+
+	# Part of app-emacs/desktop-entry-mode instead
+	rm -r "${ED}"/usr/share/emacs || die
+}
