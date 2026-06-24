@@ -15,6 +15,6 @@ HOMEPAGE="https://pypi.org/project/capyt/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-python/requests-2.33[${PYTHON_USEDEP}]"
