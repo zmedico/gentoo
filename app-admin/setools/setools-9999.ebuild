@@ -50,7 +50,7 @@ EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
+	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ESYSROOT}/usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
 	distutils-r1_python_prepare_all
