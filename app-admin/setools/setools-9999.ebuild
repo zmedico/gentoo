@@ -7,12 +7,12 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Policy Analysis Tools for SELinux"
 HOMEPAGE="https://github.com/SELinuxProject/setools/wiki"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/setools.git"
 	S="${WORKDIR}/${P}"
@@ -24,25 +24,25 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="gui test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	>=dev-python/networkx-2.6[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=sys-libs/libsepol-3.2:=
 	>=sys-libs/libselinux-3.2:=
-	gui? (
-		dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
-		dev-python/pygraphviz[${PYTHON_USEDEP}]
-	)"
+"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-python/cython-0.29.14[${PYTHON_USEDEP}]
+BDEPEND="
+	>=dev-python/cython-0.29.14[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pyqt6[gui,testlib,widgets,${PYTHON_USEDEP}]
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		sys-apps/checkpolicy
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 
@@ -56,4 +56,9 @@ python_prepare_all() {
 python_test() {
 	rm -rf setools || die
 	epytest
+}
+
+pkg_postinst() {
+	optfeature "apol: graphical SELinux policy analysis tool" \
+		"dev-python/pyqt6[gui,widgets]" "dev-python/pygraphviz"
 }
