@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/bleachbit-5.0.2-chardet-6.patch
 	"${FILESDIR}"/bleachbit-5.0.2-py3.14.patch
 	"${FILESDIR}"/bleachbit-5.0.2-pygobject-deprecation.patch
+	"${FILESDIR}"/bleachbit-5.0.2-fix_locale_test.patch
 )
 
 python_prepare_all() {
@@ -90,6 +91,11 @@ python_compile_all() {
 }
 
 python_test() {
+	# use a hardcoded valid code, some tests may fail with accent (pt, fr, ck ...)
+	# tests.TestGuiStartup.GuiStartupTestCase.test_first_start_message_clears_flag
+	# tests.TestGuiStartup.GuiStartupTestCase.test_upgrade_message_shown_for_pre_510
+	# tests.TestWinapp.WinappTestCase.test_section_not_found
+	export LC_ALL="C.UTF-8"
 	virtx eunittest -p Test*.py
 }
 
