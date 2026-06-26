@@ -32,7 +32,7 @@ src_prepare() {
 	touch .openssl_is_fresh || die
 
 	# Don't clobber toolchain defaults
-	sed -i 's/ -D_FORTIFY_SOURCE=2/ /' Makefile
+	sed -i 's/ -D_FORTIFY_SOURCE=2/ /' Makefile || die
 
 	# Copied from dev-libs/openssl
 	# allow openssl to be cross-compiled
