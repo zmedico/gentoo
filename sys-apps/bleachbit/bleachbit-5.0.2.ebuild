@@ -3,16 +3,20 @@
 
 EAPI=8
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite(+)"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit desktop distutils-r1 virtualx
+inherit desktop distutils-r1 verify-sig virtualx
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
-SRC_URI="https://download.bleachbit.org/${P}.tar.bz2"
+SRC_URI="
+	https://download.bleachbit.org/${P}.tar.bz2
+	verify-sig? ( https://download.sourceforge.net/project/bleachbit/bleachbit/${PV}/detached_signatures/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,6 +32,7 @@ RDEPEND="
 "
 BDEPEND="
 	sys-devel/gettext
+	verify-sig? ( sec-keys/openpgp-keys-bleachbit )
 "
 
 distutils_enable_tests unittest
