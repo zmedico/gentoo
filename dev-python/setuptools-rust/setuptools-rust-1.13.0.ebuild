@@ -7,7 +7,7 @@ CARGO_OPTIONAL=yes
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-RUST_MIN_VER=1.83.0
+RUST_MIN_VER=1.85.0
 CRATES="
 	autocfg@1.3.0
 	autocfg@1.5.1
