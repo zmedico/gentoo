@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/squid.gpg
-inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs verify-sig
+inherit autotools eapi9-ver flag-o-matic linux-info pam systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Full-featured web proxy cache"
 HOMEPAGE="https://www.squid-cache.org/"
@@ -246,14 +246,8 @@ src_configure() {
 		fi
 	fi
 
-	# NTLM modules
+	# NTLM modules (none now, see bug #972634)
 	local ntlm_modules=( none )
-
-	if use samba ; then
-		# We intentionally overwrite ntlm_modules here to lose
-		# the 'none'.
-		ntlm_modules=( SMB_LM )
-	fi
 
 	# External helpers
 	local ext_helpers=(
@@ -407,5 +401,10 @@ pkg_preinst() {
 pkg_postinst() {
 	if [[ ${#r} -gt 0 ]]; then
 		elog "You are using a release with the official ${r} patch! Make sure you mention that when asking for support."
+	fi
+
+	if ver_replacing -lt 7.6 && use samba && use ldap ; then
+		ewarn "SMB_LM support is now gone from >= Squid 7.6. Please use ntlm_auth instead"
+		ewarn "from net-fs/samba."
 	fi
 }
