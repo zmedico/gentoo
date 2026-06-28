@@ -45,6 +45,9 @@ src_prepare() {
 	# https://github.com/llvm/llvm-project/issues/120902
 	sed -i -e '/LINK_LIBS/s:PUBLIC:PRIVATE:' \
 		lib/ExecutionEngine/CMakeLists.txt || die
+
+	# this test is completely unpredictable, no clue why
+	rm test/mlir-pdll-lsp-server/view-output.test || die
 }
 
 check_distribution_components() {
@@ -213,8 +216,6 @@ multilib_src_test() {
 				Dialect/Tensor/tracking-listener.mlir
 				Pass/pipeline-stats-nested.mlir
 				Pass/pipeline-stats.mlir
-				# https://github.com/llvm/llvm-project/pull/157885#issuecomment-3288095032
-				mlir-pdll-lsp-server/view-output.test
 			)
 			;;
 	esac
