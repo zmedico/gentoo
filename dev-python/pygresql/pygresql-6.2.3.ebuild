@@ -27,7 +27,7 @@ DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	test? (
-		dev-db/postgresql[server]
+		dev-db/postgresql[server(+)]
 	)
 "
 

@@ -4,7 +4,7 @@
 EAPI=7
 
 POSTGRES_COMPAT=( {12..16} )
-POSTGRES_USEDEP="server"
+POSTGRES_USEDEP="server(+)"
 
 inherit postgres-multi
 
