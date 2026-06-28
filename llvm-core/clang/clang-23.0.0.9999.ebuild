@@ -41,13 +41,9 @@ PDEPEND="
 	llvm-core/clang-toolchain-symlinks:${LLVM_MAJOR}
 "
 
-LLVM_COMPONENTS=(
-	clang clang-tools-extra cmake
-)
+LLVM_COMPONENTS=( clang clang-tools-extra cmake utils/docs )
+LLVM_TEST_COMPONENTS=( llvm/utils )
 LLVM_MANPAGES=1
-LLVM_TEST_COMPONENTS=(
-	llvm/utils
-)
 LLVM_USE_TARGETS=llvm+eq
 llvm.org_set_globals
 
