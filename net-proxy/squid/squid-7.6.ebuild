@@ -86,6 +86,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.5-gentoo.patch
 	"${FILESDIR}"/${PN}-7.5-use-system-libltdl.patch
 	"${FILESDIR}"/${PN}-7.5-ar.patch
+	"${FILESDIR}"/${PN}-7.6-tests-perms.patch
 )
 
 pkg_pretend() {
