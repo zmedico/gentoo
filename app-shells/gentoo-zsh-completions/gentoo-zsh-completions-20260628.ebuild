@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit shell-completion
+
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gentoo/gentoo-zsh-completions.git"
@@ -22,8 +24,7 @@ SLOT="0"
 RDEPEND=">=app-shells/zsh-4.3.5"
 
 src_install() {
-	insinto /usr/share/zsh/site-functions
-	doins src/_*
+	dozshcomp src/_*
 
 	dodoc AUTHORS
 }
