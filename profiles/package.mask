@@ -268,10 +268,6 @@ dev-util/buildbot-www-react
 # >=1.7.0 is an LLM-driven revamp of the project.
 >=sys-fs/quotatool-1.7.0
 
-# Conrad Kostecki <conikost@gentoo.org> (2026-03-28)
-# Version 1.18.x breaks API and needs more testing
->=net-libs/libupnp-1.18.4
-
 # Sam James <sam@gentoo.org> (2026-03-22)
 # Commits since the last release of Crypt-OpenSSL-RSA (0.370) are heavily
 # driven by LLM automation. Avoid exposing users to this (bug #971488).
