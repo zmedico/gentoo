@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-06-29)
+# ICR (Intel Compute Runtime) is currently not compatible.
+# Will be unmasked, once a new version is available.
+>=dev-libs/level-zero-1.32.0
+
 # Michał Górny <mgorny@gentoo.org> (2026-06-29)
 # Unmaintained.  Requires patching since py3.12.  No revdeps.
 # Removal on 2026-07-29.  Bug #978274.
