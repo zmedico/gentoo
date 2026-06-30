@@ -13,7 +13,7 @@ inherit cmake docs
 ## instead of https://github.com/BlueBrain/HighFive
 DESCRIPTION="Header-only C++ interface for libhdf5"
 HOMEPAGE="https://highfive-devs.github.io/highfive/"
-SRC_URI="https://github.com/${PN}-devs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/highfive-devs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
@@ -28,8 +28,8 @@ DEPEND="
 	${RDEPEND}
 	test? (
 		>=dev-cpp/catch-3.4.0:0
-		dev-libs/boost
 		dev-cpp/eigen
+		dev-libs/boost
 		media-libs/opencv
 	)
 "
