@@ -6,13 +6,13 @@ EAPI=8
 inherit systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
-HOMEPAGE="https://sysstat.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://sysstat.github.io/ https://github.com/sysstat/sysstat"
+SRC_URI="https://github.com/sysstat/sysstat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="dcron debug nls lm-sensors selinux systemd"
+IUSE="dcron debug lm-sensors nls selinux systemd"
 REQUIRED_USE="dcron? ( !systemd )"
 
 DEPEND="
