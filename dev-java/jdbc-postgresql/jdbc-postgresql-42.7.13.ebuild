@@ -38,8 +38,8 @@ DEPEND="
 	>=dev-java/waffle-jna-3.5.1:0
 	>=virtual/jdk-11:*
 	test? (
-		>=dev-java/asm-9.9.1:0
-		>=dev-java/byte-buddy-1.18.4:0
+		>=dev-java/asm-9.10.1:0
+		>=dev-java/byte-buddy-1.18.10:0
 		dev-java/junit:4
 		dev-java/junit:5[vintage]
 	)
