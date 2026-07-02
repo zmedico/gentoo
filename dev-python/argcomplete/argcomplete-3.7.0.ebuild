@@ -22,6 +22,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 # pip is called as an external tool
+# setuptools is needed for package tests
 # zsh pin: https://github.com/kislyuk/argcomplete/issues/544
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
@@ -30,6 +31,7 @@ BDEPEND="
 		~app-shells/zsh-5.9
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		>=dev-python/pip-19
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
 "
 
