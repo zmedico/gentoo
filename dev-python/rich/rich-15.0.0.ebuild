@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{12..15} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature
 
@@ -54,11 +54,6 @@ python_test() {
 	)
 	# version-specific output -- the usual deal
 	case ${EPYTHON} in
-		pypy3.11)
-			EPYTEST_DESELECT+=(
-				tests/test_inspect.py::test_inspect_integer_with_methods_python311
-			)
-			;;
 		python3.15*)
 			EPYTEST_DESELECT+=(
 				# https://github.com/Textualize/rich/pull/4082 isn't complete
