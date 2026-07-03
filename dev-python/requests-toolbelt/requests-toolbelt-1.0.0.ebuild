@@ -41,6 +41,7 @@ BDEPEND="
 
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
