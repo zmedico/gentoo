@@ -34,7 +34,7 @@ BDEPEND="
 	app-alternatives/lex
 	python? (
 		>=dev-lang/swig-3.0
-		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]' python3_12)
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 		doc? ( >=dev-python/sphinx-1.3 )
 	)
 	doc? ( >=app-text/doxygen-1.8.6 )
