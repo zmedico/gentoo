@@ -70,13 +70,15 @@ python_test() {
 	)
 	EPYTEST_IGNORE=()
 
-	if ! has_version dev-python/pykeepass; then
+	local usedep="python_targets_${EPYTHON/./_}(-)"
+
+	if ! has_version "dev-python/pykeepass[${usedep}]"; then
 		EPYTEST_DESELECT+=(
 			tests/imports/test_parse.py::TestParse::test_import_keepass
 		)
 	fi
 
-	if ! has_version dev-python/jsonpath-ng; then
+	if ! has_version "dev-python/jsonpath-ng[${usedep}]"; then
 		EPYTEST_IGNORE+=(
 			tests/filters/test_filter_jsonpath.py
 		)
