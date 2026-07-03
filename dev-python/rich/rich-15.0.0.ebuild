@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} pypy3_11 )
 
 inherit distutils-r1 optfeature
 
@@ -57,6 +57,18 @@ python_test() {
 		pypy3.11)
 			EPYTEST_DESELECT+=(
 				tests/test_inspect.py::test_inspect_integer_with_methods_python311
+			)
+			;;
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				# https://github.com/Textualize/rich/pull/4082 isn't complete
+				tests/test_inspect.py::test_inspect_integer_with_methods_python38_and_python39
+				tests/test_inspect.py::test_inspect_integer_with_methods_python310only
+				tests/test_inspect.py::test_inspect_integer_with_methods_python311
+				tests/test_inspect.py::test_inspect_builtin_function_except_python311
+				tests/test_inspect.py::test_inspect_builtin_function_only_python311
+				tests/test_pretty.py::test_attrs_broken
+
 			)
 			;;
 	esac
