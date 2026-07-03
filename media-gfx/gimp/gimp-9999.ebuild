@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 VALA_USE_DEPEND=vapigen
 
 inherit bash-completion-r1 branding flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
