@@ -5,8 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/twisted/twisted
-PYTHON_TESTED=( python3_{11..14} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_TESTED=( python3_{12..14} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 multiprocessing pypi virtualx
