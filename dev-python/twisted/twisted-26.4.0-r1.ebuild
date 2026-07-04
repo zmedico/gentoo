@@ -5,8 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/twisted/twisted
-PYTHON_TESTED=( python3_{12..14} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 )
+PYTHON_TESTED=( python3_{12..15} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 multiprocessing pypi virtualx
@@ -98,6 +98,8 @@ python_prepare_all() {
 		"${FILESDIR}/${P}-py314.patch"
 		# https://github.com/twisted/twisted/pull/12661
 		"${FILESDIR}/${P}-pyopenssl.patch"
+		# https://github.com/twisted/twisted/pull/12602
+		"${FILESDIR}/${P}-py315.patch"
 	)
 
 	distutils-r1_python_prepare_all
