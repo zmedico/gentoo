@@ -96,6 +96,8 @@ python_prepare_all() {
 	local PATCHES=(
 		# https://github.com/twisted/twisted/pull/12637
 		"${FILESDIR}/${P}-py314.patch"
+		# https://github.com/twisted/twisted/pull/12661
+		"${FILESDIR}/${P}-pyopenssl.patch"
 	)
 
 	distutils-r1_python_prepare_all
