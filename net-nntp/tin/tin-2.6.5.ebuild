@@ -24,7 +24,7 @@ RDEPEND="
 	virtual/zlib:=
 	virtual/libiconv
 	cancel-locks? ( >=net-libs/canlock-3.0:= )
-	gpg? ( app-crypt/gnupg )
+	gpg? ( app-alternatives/gpg )
 	nls? ( virtual/libintl )
 	sasl? ( net-misc/gsasl[client] )
 	socks5? ( net-proxy/dante )
