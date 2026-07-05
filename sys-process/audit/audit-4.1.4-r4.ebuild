@@ -116,6 +116,8 @@ src_configure() {
 multilib_src_compile() {
 	default
 
+	# We could copy this for tests but the only thing the bindings do
+	# in check-local is rebuild (!) with -Wl,--no-undefined.
 	if multilib_is_native_abi; then
 		local native_build="${BUILD_DIR}"
 
