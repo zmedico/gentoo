@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 virtualx
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
