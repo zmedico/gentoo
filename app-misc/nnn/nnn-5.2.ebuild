@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="colemak emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
 
 DEPEND="sys-libs/ncurses:=
-	pcre? ( dev-libs/libpcre2 )
+	pcre? ( dev-libs/libpcre2:= )
 	readline? ( sys-libs/readline:= )
 	elibc_musl? ( sys-libs/fts-standalone )"
 BDEPEND="virtual/pkgconfig"
