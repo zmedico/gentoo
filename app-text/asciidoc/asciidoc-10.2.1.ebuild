@@ -25,17 +25,13 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/libxml2:2
 "
-BDEPEND="
-	test? ( $(python_gen_cond_dep '
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	') )
-"
 
 DOC_CONTENTS="
 If you are going to use a2x, please also look at a2x(1) under
 REQUISITES for a list of runtime dependencies.
 "
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 src_install() {
