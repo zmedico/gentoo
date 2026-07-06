@@ -6,7 +6,7 @@ EAPI=8
 # please bump dev-python/ensurepip-pip along with this package!
 
 DISTUTILS_USE_PEP517=flit-core
-PYTHON_TESTED=( python3_{12..14} )
+PYTHON_TESTED=( python3_{12..15} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
@@ -76,6 +76,9 @@ python_prepare_all() {
 	local PATCHES=(
 		# prepare to unbundle dependencies and remove redundant test wheels
 		"${FILESDIR}/pip-26.1.2-unbundle-r1.patch"
+		# https://github.com/pypa/pip/pull/14033
+		# + https://github.com/pypa/pip/commit/4c6d7471dec62fb004a47a7c2164b6b5b089ac06
+		"${FILESDIR}/pip-26.1.2-py315.patch"
 	)
 
 	distutils-r1_python_prepare_all
@@ -159,22 +162,6 @@ python_test() {
 		# requires proxy.py
 		tests/functional/test_proxy.py
 	)
-
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# unexpected tempfiles?
-				tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
-				tests/functional/test_install_config.py::test_prompt_for_authentication
-				# wrong path
-				tests/functional/test_install.py::test_install_editable_with_prefix_setup_py
-				# wrong exception assumptions
-				tests/unit/test_utils_datetime.py::test_parse_iso_datetime_invalid
-				# TODO
-				tests/functional/test_install.py::test_install_warns_on_unexpected_post_install_import
-			)
-			;;
-	esac
 
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
