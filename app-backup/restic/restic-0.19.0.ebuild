@@ -20,7 +20,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="sys-fs/fuse:0"
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-alexanderneumann )"
+BDEPEND="
+	>=dev-lang/go-1.25.8
+	verify-sig? ( sec-keys/openpgp-keys-alexanderneumann )
+"
 
 src_unpack() {
 	if use verify-sig; then
