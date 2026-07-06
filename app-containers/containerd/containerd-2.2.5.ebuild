@@ -29,6 +29,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	selinux? ( sec-policy/selinux-docker )
 	dev-go/go-md2man
+	>=dev-lang/go-1.25.0
 	virtual/pkgconfig
 "
 
