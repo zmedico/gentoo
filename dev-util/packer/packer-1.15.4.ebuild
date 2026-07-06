@@ -7,13 +7,15 @@ inherit go-module shell-completion
 
 DESCRIPTION="A tool to create identical machine images for multiple platforms"
 HOMEPAGE="https://www.packer.io"
-SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hashicorp/packer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://gentoo.neutroniak.com/${P}-deps.tar.xz"
 
 LICENSE="BUSL-1.1"
 LICENSE+=" Apache-2.0 BSD MIT MPL-2.0 unicode Unicode-DFS-2016 ISC CC-BY-4.0 GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
+
+BDEPEND=">=dev-lang/go-1.25.11"
 
 DOCS=( {README,CHANGELOG}.md )
 
