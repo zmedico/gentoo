@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	gtk? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2[introspection?]
-		x11-libs/gtk+:3[${MULTILIB_USEDEP},introspection?]
+		x11-libs/gtk+:3[${MULTILIB_USEDEP},introspection?,X?]
 		introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	)
 	imagemagick? (
@@ -123,6 +123,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	append-cppflags -DNDEBUG
+
+	# bug #957827
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
 	local myeconfargs=(
 		--without-qt # bug 947629
