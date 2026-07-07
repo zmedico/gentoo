@@ -22,6 +22,34 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+# @FUNCTION: _qt_eapi9_banned_deprecated_func
+# @INTERNAL
+# @DESCRIPTION:
+# Banned functions are banned. Deprecated functions are ...
+_qt_eapi9_banned_deprecated_func() {
+	[[ ${EAPI} == 8 ]] && return
+
+	_deprecated_use_instead() {
+		eqawarn "QA Notice: ${1} is deprecated and will be banned after EAPI 9 -"
+		eqawarn "    use '${2}' instead."
+	}
+
+	case ${FUNCNAME[1]} in
+		qt6_get_bindir|qt6_get_libexecdir)
+			_deprecated_use_instead ${FUNCNAME[1]} "${FUNCNAME[1]/qt6/qt} 6"
+			[[ ${FUNCNAME[1]} == qt6_get_bindir ]] &&
+				eqawarn "    IMPORTANT: qt_get_bindir no longer prepends EPREFIX," &&
+				eqawarn "               which likely was wrong to begin with."
+			;;
+		qt6_get_libdir)
+			die "qt6_get_libdir is banned. 'qt_get_archdatadir 6' serves \$(qt6_get_libdir)/qt6"
+			;;
+		qt6_get_*)
+			_deprecated_use_instead ${FUNCNAME[1]} "${FUNCNAME[1]/qt6/qt} 6"
+			;;
+	esac
+}
+
 # @FUNCTION: _qt_get_check_func_call
 # @INTERNAL
 # @DESCRIPTION:
@@ -108,45 +136,57 @@ qt_get_qmldir() {
 }
 
 # @FUNCTION: qt6_get_bindir
+# @DEPRECATED
 # @DESCRIPTION:
 # Echoes the directory where Qt6 binaries are installed.
-# EPREFIX is already prepended to the returned path.
+# EPREFIX is always prepended to the returned path.
 qt6_get_bindir() {
+	_qt_eapi9_banned_deprecated_func
 	echo "${EPREFIX}$(qt_get_bindir 6)"
 }
 
 # @FUNCTION: qt6_get_headerdir
+# @DEPRECATED
 # @DESCRIPTION:
 # Echoes the directory where Qt6 headers are installed.
 qt6_get_headerdir() {
+	_qt_eapi9_banned_deprecated_func
 	qt_get_headerdir 6
 }
 
 # @FUNCTION: qt6_get_libdir
+# @DEPRECATED
 # @DESCRIPTION:
 # Echoes the directory where Qt6 libraries are installed.
 qt6_get_libdir() {
+	_qt_eapi9_banned_deprecated_func
 	echo "/usr/$(get_libdir)"
 }
 
 # @FUNCTION: qt6_get_libexecdir
+# @DEPRECATED
 # @DESCRIPTION:
 # Echoes the directory where Qt6 libexec bins are installed.
 qt6_get_libexecdir() {
+	_qt_eapi9_banned_deprecated_func
 	qt_get_libexecdir 6
 }
 
 # @FUNCTION: qt6_get_mkspecsdir
+# @DEPRECATED
 # @DESCRIPTION:
 # Echoes the directory where Qt6 mkspecs are installed.
 qt6_get_mkspecsdir() {
+	_qt_eapi9_banned_deprecated_func
 	qt_get_mkspecsdir 6
 }
 
 # @FUNCTION: qt6_get_plugindir
+# @DEPRECATED
 # @DESCRIPTION:
 # Echoes the directory where Qt6 plugins are installed.
 qt6_get_plugindir() {
+	_qt_eapi9_banned_deprecated_func
 	qt_get_plugindir 6
 }
 
