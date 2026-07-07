@@ -18,7 +18,8 @@ if [[ -z ${_QT_UTILS_ECLASS} ]]; then
 _QT_UTILS_ECLASS=1
 
 case ${EAPI} in
-	8|9) ;;
+	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -36,7 +37,7 @@ _qt_eapi9_banned_deprecated_func() {
 
 	case ${FUNCNAME[1]} in
 		qt6_get_bindir|qt6_get_libexecdir)
-			_deprecated_use_instead ${FUNCNAME[1]} "${FUNCNAME[1]/qt6/qt} 6"
+			_deprecated_use_instead ${FUNCNAME[1]} "qt_get_broot_binary 6 <binary>' or '${FUNCNAME[1]/qt6/qt} 6"
 			[[ ${FUNCNAME[1]} == qt6_get_bindir ]] &&
 				eqawarn "    IMPORTANT: qt_get_bindir no longer prepends EPREFIX," &&
 				eqawarn "               which likely was wrong to begin with."
@@ -55,7 +56,13 @@ _qt_eapi9_banned_deprecated_func() {
 # @DESCRIPTION:
 # Checks parameters of public, parent qt_get_* functions for validity.
 _qt_get_check_func_call() {
-	[[ $# -ne 1 ]] && die "${FUNCNAME[1]}: must be passed exactly one argument"
+	[[ ${FUNCNAME[2]} == qt_get_* ]] && return # don't check twice
+	case ${FUNCNAME[1]} in
+		qt_get_broot_binary)
+			[[ $# -ne 2 ]] && die "${FUNCNAME[1]}: must be passed exactly two arguments" ;;
+		*)
+			[[ $# -ne 1 ]] && die "${FUNCNAME[1]}: must be passed exactly one argument" ;;
+	esac
 	case ${1} in
 		6) ;;
 		*) die "${FUNCNAME[1]}: Qt ${1} is not supported" ;;
@@ -88,6 +95,18 @@ qt_get_archdatadir() {
 qt_get_bindir() {
 	_qt_get_check_func_call "$@"
 	echo "$(_qt_get_archdatadir "$@")/bin"
+}
+
+# @FUNCTION: qt_get_broot_binary
+# @USAGE: <qt_maj_ver> <binary name>
+# @DESCRIPTION:
+# Echoes the BROOT prefixed path to a specific Qt binary, regardless whether
+# located in bindir or libexecdir.
+qt_get_broot_binary() {
+	_qt_get_check_func_call "$@"
+	PATH=${BROOT}$(qt_get_libexecdir ${1}):${BROOT}$(qt_get_bindir ${1}) \
+		type -P "${2}" | head -n 1
+	pipestatus || die "${FUNCNAME[0]}: failed trying to detect binary: ${2}"
 }
 
 # @FUNCTION: qt_get_headerdir
