@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="+deploy doc +extended test"
 
 BDEPEND="
+	>=dev-lang/go-1.26.0
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor
