@@ -12,10 +12,12 @@ LICENSE="MIT LGPL-2.1 BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc +drm +fbdev freetype +gles2 libseat +pango test"
+IUSE="debug +drm +fbdev freetype +gles2 libseat +pango test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND=">=dev-libs/libtsm-4.5.0:=
+COMMON_DEPEND="app-text/docbook-xsl-stylesheets
+	>=dev-libs/libtsm-4.5.0:=
+	dev-libs/libxslt
 	media-libs/libglvnd[X(+)]
 	>=virtual/udev-172
 	virtual/zlib:=
@@ -29,8 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xkeyboard-config"
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
-BDEPEND="virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="drm? ( gles2 )"
 
@@ -45,7 +46,7 @@ src_configure() {
 	strip-flags
 
 	local emesonargs=(
-		$(meson_feature doc docs)
+		-Ddocs=enabled
 		$(meson_use debug)
 		$(meson_feature libseat)
 		$(meson_feature fbdev video_fbdev)
