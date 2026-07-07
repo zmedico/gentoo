@@ -14,7 +14,7 @@ inherit user-info flag-o-matic autotools optfeature pam systemd toolchain-funcs 
 PARCH=${P/_}
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
-HOMEPAGE="https://www.openssh.com/"
+HOMEPAGE="https://www.openssh.org/"
 SRC_URI="
 	mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	verify-sig? ( mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz.asc )
