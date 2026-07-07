@@ -28,7 +28,7 @@ RDEPEND="
 "
 
 distutils_enable_sphinx doc \
-	dev-python/recommonmark
+	dev-python/myst-parser
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
