@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV^^}"
 MY_P="${PN}-${MY_PV}"
@@ -47,7 +47,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-node-source-assertion.patch"
+	# From master:
+	# https://github.com/lwindolf/liferea/commit/c2169c49f897fe41da97d500f7e3595a14a6e932
+	"${FILESDIR}/${PN}-1.16.12-fix-node-source-assertion.patch"
 )
 
 src_prepare() {
