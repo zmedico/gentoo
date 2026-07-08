@@ -52,6 +52,9 @@ PATCHES=(
 	# Gentoo-specific lua tweak hack
 	"${FILESDIR}"/1.26.0-lua.patch
 	"${FILESDIR}"/${PN}-1.38.1-test-extension.patch
+
+	# https://gitlab.gnome.org/GNOME/libpeas/-/work_items/62
+	"${FILESDIR}"/${PN}-1.38.1-disable-lua-test.patch
 )
 
 pkg_setup() {
