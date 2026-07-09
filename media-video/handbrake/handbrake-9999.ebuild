@@ -62,9 +62,12 @@ bundle_src_uri
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="amf +fdk gui libdovi numa nvenc qsv x265"
+IUSE="amf +fdk gui libdovi numa nvdec nvenc qsv x265"
 
-REQUIRED_USE="numa? ( x265 )"
+REQUIRED_USE="
+	numa? ( x265 )
+	nvdec? ( nvenc )
+"
 
 # >=media-libs/libvpl-1.13.0: bug #957811 (check libhb/qsvcommon.h for new platform codenames)
 COMMON_DEPEND="
@@ -120,6 +123,7 @@ BDEPEND="
 		dev-build/meson
 		sys-devel/gettext
 	)
+	nvdec? ( llvm-core/clang:*[llvm_targets_NVPTX] )
 "
 if [[ ${PV} != 9999 ]]; then
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-handbrake-20260311 )"
@@ -194,8 +198,8 @@ src_configure() {
 		$(use_enable gui gtk)
 		$(use_enable libdovi)
 		$(use_enable numa)
+		$(use_enable nvdec)
 		$(use_enable nvenc)
-		$(use_enable nvenc nvdec)
 		$(use_enable x265)
 		$(use_enable qsv)
 	)
