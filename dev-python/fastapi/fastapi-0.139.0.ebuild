@@ -37,6 +37,7 @@ BDEPEND="
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/httpx2[${PYTHON_USEDEP}]
+		dev-python/pydantic-settings[${PYTHON_USEDEP}]
 		dev-python/python-multipart[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/typer[${PYTHON_USEDEP}]
