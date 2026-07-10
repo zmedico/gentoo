@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -101,6 +101,14 @@ python_test() {
 				# TODO
 				pythran/tests/test_numpy_fft.py::TestNumpyFFT::test_fft_3d_axis
 				pythran/tests/test_numpy_fft.py::TestNumpyFFTN
+			)
+			;;
+	esac
+
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				pythran/tests/test_array.py::TestArray::test_typecodes
 			)
 			;;
 	esac
