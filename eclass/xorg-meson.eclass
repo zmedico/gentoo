@@ -6,7 +6,7 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Author: Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: meson meson-multilib
 # @BLURB: Reduces code duplication in the X11 ebuilds.
 # @DESCRIPTION:
@@ -21,7 +21,7 @@
 # everything else should be automatic.
 
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
