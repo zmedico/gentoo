@@ -59,6 +59,9 @@ PATCHES=(
 	# Gentoo-specific lua tweak hack
 	"${FILESDIR}"/${PN}-2.2.1-lua_impl.patch
 	"${FILESDIR}"/${PN}-1.38.1-test-extension.patch
+
+	# https://bugs.gentoo.org/961580
+	"${FILESDIR}"/${PN}-2.2.1-skip_test_gjs.patch
 )
 
 pkg_setup() {
