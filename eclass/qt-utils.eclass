@@ -98,6 +98,15 @@ qt_get_plugindir() {
 	echo "$(_qt_get_archdatadir "$@")/plugins"
 }
 
+# @FUNCTION: qt_get_qmldir
+# @USAGE: <qt_maj_ver>
+# @DESCRIPTION:
+# Echoes the directory where Qt Qml imports are installed.
+qt_get_qmldir() {
+	_qt_get_check_func_call "$@"
+	echo "$(_qt_get_archdatadir "$@")/qml"
+}
+
 # @FUNCTION: qt6_get_bindir
 # @DESCRIPTION:
 # Echoes the directory where Qt6 binaries are installed.
