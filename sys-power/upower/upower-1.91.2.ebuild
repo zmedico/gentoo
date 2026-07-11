@@ -89,6 +89,7 @@ src_configure() {
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Dos_backend="${backend}"
 		$(meson_feature ios idevice)
+		-Dinstalled_tests=false
 	)
 	meson_src_configure
 }
