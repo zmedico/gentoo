@@ -57,7 +57,7 @@ python_check_deps() {
 		python_has_version \
 			"dev-python/python-dbusmock[${PYTHON_USEDEP}]" \
 			"dev-python/pygobject:3[${PYTHON_USEDEP}]" \
-        || return 1
+		|| return 1
 	else
 		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return 1
 	fi
@@ -69,6 +69,8 @@ python_check_deps() {
 	if use man; then
 		python_has_version "dev-python/argparse-manpage[${PYTHON_USEDEP}]" || return 1
 	fi
+
+	return 0
 }
 
 src_configure() {
