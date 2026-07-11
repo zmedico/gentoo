@@ -85,8 +85,16 @@ src_configure() {
 }
 
 src_test() {
+	# The default portage tmpdir is too long for dbus 99 byte limit for sockets
+	local -x TMPDIR="$(mktemp -d --tmpdir=/tmp ${PF}-XXX || die)"
 	# Dbus tests are prone to fail when run in parallel
-	MAKEOPTS="-j1" meson_src_test
+	MAKEOPTS="-j1" nonfatal meson_src_test
+	local ret="${?}"
+	rm -r "${TMPDIR}" || die
+	if [[ "${ret}" != 0 ]]; then
+		die "tests failed"
+	fi
+
 }
 
 src_install() {
