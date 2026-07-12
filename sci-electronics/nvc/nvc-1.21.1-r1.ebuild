@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_COMPAT=( {20..22} )
 
-inherit autotools bash-completion-r1 llvm-r2
+inherit autotools llvm-r2 shell-completion
 
 DESCRIPTION="NVC is a VHDL compiler and simulator"
 HOMEPAGE="https://www.nickg.me.uk/nvc/
@@ -29,7 +29,7 @@ S="${NVC_BUILDDIR}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="debug llvm test"
+IUSE="llvm test"
 RESTRICT="test"         # Some tests fail.
 
 RDEPEND="
@@ -61,7 +61,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/nvc-1.9.2-jit-code-capstone.patch" )
+PATCHES=(
+	"${FILESDIR}/nvc-1.9.2-jit-code-capstone.patch"
+	"${FILESDIR}/nvc-1.21.1-fpurge.patch"
+)
 
 # Special libraries for NVC.
 QA_FLAGS_IGNORED="usr/lib[0-9]*/nvc/preload[0-9]*.so"
@@ -93,7 +96,6 @@ src_configure() {
 	local -a myconf=(
 		--enable-vital
 		--with-bash-completion="$(get_bashcompdir)"
-		$(use_enable debug)
 		$(use_enable llvm)
 	)
 	econf "${myconf[@]}"
