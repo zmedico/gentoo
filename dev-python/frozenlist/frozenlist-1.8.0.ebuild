@@ -35,6 +35,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# https://github.com/aio-libs/frozenlist/pull/749
+	"${FILESDIR}"/${P}-tests.patch
+)
+
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
