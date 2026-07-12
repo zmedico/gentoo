@@ -194,10 +194,10 @@ selinux-policy-2_src_prepare() {
 
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
-		cd "${S}" || die "Could not enter ${S}"
+		pushd "${S}" >/dev/null || die "Could not enter ${S}"
 		einfo "Applying SELinux policy updates ... "
 		eapply -p0 -- "${WORKDIR}/0001-full-patch-against-stable-release.patch"
-		cd "${S}/refpolicy/policy/modules" || die
+		popd >/dev/null || die
 	fi
 
 	# Call in eapply_user. We do this early on as we start moving
