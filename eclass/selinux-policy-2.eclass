@@ -197,6 +197,7 @@ selinux-policy-2_src_prepare() {
 		cd "${S}" || die "Could not enter ${S}"
 		einfo "Applying SELinux policy updates ... "
 		eapply -p0 -- "${WORKDIR}/0001-full-patch-against-stable-release.patch"
+		cd "${S}/refpolicy/policy/modules" || die
 	fi
 
 	# Call in eapply_user. We do this early on as we start moving
