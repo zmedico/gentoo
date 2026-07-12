@@ -202,7 +202,9 @@ selinux-policy-2_src_prepare() {
 
 	# Call in eapply_user. We do this early on as we start moving
 	# files left and right hereafter.
+	pushd "${WORKDIR}"/refpolicy >/dev/null || die
 	eapply_user
+	popd >/dev/null || die
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" = "declare -a"* || -n ${POLICY_FILES} ]]; then
