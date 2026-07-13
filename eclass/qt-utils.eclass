@@ -105,8 +105,7 @@ qt_get_bindir() {
 qt_get_broot_binary() {
 	_qt_get_check_func_call "$@"
 	PATH=${BROOT}$(qt_get_libexecdir ${1}):${BROOT}$(qt_get_bindir ${1}) \
-		type -P "${2}" | head -n 1
-	pipestatus || die "${FUNCNAME[0]}: failed trying to detect binary: ${2}"
+		type -P "${2}" || die "${FUNCNAME[0]}: failed trying to detect binary: ${2}"
 }
 
 # @FUNCTION: qt_get_headerdir
