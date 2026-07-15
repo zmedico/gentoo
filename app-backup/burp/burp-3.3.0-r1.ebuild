@@ -3,16 +3,20 @@
 
 EAPI=8
 
-inherit autotools eapi9-ver flag-o-matic systemd
+inherit autotools eapi9-ver flag-o-matic systemd verify-sig
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
 HOMEPAGE="https://burp.grke.org/"
-SRC_URI="https://github.com/grke/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/grke/${PN}/releases/download/${PV}/${PN}-${PV}.tar.bz2
+	verify-sig? ( https://github.com/grke/${PN}/releases/download/${PV}/${PN}-${PV}.tar.bz2.asc )
+	"
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/grke.asc
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="acl test xattr"
+IUSE="acl test verify-sig xattr"
 
 RESTRICT="!test? ( test )"
 
@@ -31,7 +35,8 @@ DEPEND="${COMMON_DEPEND}
 	elibc_musl? ( sys-libs/queue-standalone )
 	test? ( dev-libs/check )"
 BDEPEND=">=dev-build/autoconf-2.71
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-grke )"
 RDEPEND="${COMMON_DEPEND}
 	virtual/logger"
 
