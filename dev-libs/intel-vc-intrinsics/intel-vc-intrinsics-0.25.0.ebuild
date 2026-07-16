@@ -7,7 +7,7 @@ CMAKE_BUILD_TYPE="Release"
 LLVM_COMPAT=( {15..22} )
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 
 inherit cmake llvm-r2 python-any-r1
 
