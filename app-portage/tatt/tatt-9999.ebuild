@@ -21,6 +21,7 @@ RDEPEND="
 	app-portage/gentoolkit[${PYTHON_USEDEP}]
 	app-portage/nattka[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	www-client/pybugz
 "
