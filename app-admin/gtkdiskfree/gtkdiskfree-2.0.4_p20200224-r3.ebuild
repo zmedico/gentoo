@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Graphical tool to show free disk space like df"
 HOMEPAGE="https://gitlab.com/mazes_80/gtkdiskfree"
 COMMIT="bdda379b9109a226a37801505a19da91494144a6"
-SRC_URI="https://gitlab.com/mazes_80/${PN}/-/archive/${COMMIT}/${PN}-${COMMIT}.tar.gz"
+SRC_URI="https://gitlab.com/mazes_80/${PN}/-/archive/${COMMIT}/${PN}-${COMMIT}.tar.bz2"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2+"
