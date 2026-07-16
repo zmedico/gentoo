@@ -32,9 +32,9 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		alsa? ( dev-python/pyalsa[${PYTHON_USEDEP}] )
 	')
 	x11-libs/gtk+:3
-	alsa? ( dev-python/pyalsa )
 	!oss? ( media-sound/timidity++ )
 "
 DEPEND="${RDEPEND}"
