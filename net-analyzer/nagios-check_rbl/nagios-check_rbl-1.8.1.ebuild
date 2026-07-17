@@ -8,12 +8,11 @@ HOMEPAGE="https://github.com/matteocorti/check_rbl"
 
 MY_P="${P/nagios-/}"
 SRC_URI="https://github.com/matteocorti/check_rbl/releases/download/v${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-
 KEYWORDS="~amd64 ~hppa ~sparc ~x86"
-IUSE=""
 
 # No, this is not redundant -- see bug 627082.
 RESTRICT=test
@@ -42,8 +41,6 @@ RDEPEND="dev-lang/perl
 	dev-perl/Readonly
 	virtual/perl-Socket"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	perl Makefile.PL INSTALLDIRS=vendor || die
