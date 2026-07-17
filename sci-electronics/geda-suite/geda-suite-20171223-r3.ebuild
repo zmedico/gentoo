@@ -3,12 +3,12 @@
 
 EAPI=8
 
-HOMEPAGE="http://www.geda.seul.org"
 DESCRIPTION="Metapackage for all components for a full-featured gEDA/gaf system"
-
+HOMEPAGE="http://www.geda.seul.org"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	sci-electronics/geda
