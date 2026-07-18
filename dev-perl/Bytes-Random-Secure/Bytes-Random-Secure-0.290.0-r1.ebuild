@@ -9,14 +9,10 @@ DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
 DESCRIPTION="Extension to generate cryptographically-secure random bytes"
+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="minimal test"
-RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}/Bytes-Random-Secure-0.290.0-CVE-2026-11625.patch"
-)
+IUSE="minimal"
 
 RDEPEND="
 	dev-perl/Crypt-Random-Seed
@@ -24,7 +20,8 @@ RDEPEND="
 	dev-perl/Math-Random-ISAAC
 	>=virtual/perl-Scalar-List-Utils-1.210.0
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
+	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.560.0
 	test? (
 		>=virtual/perl-Test-Simple-0.980.0
@@ -33,6 +30,7 @@ BDEPEND="${RDEPEND}
 		)
 	)
 "
+
 PERL_RM_FILES=(
 	t/00-boilerplate.t
 	t/01-manifest.t
@@ -43,4 +41,8 @@ PERL_RM_FILES=(
 	t/06-meta-yaml.t
 	t/07-meta-json.t
 	t/09-changes.t
+)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.290.0-CVE-2026-11625.patch"
 )
