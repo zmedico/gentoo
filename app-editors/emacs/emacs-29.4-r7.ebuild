@@ -462,6 +462,10 @@ src_test() {
 		# ast changes. Bug #922525
 		%src/treesit-tests.log
 
+		# Reason: test not skipped if tree-sitter-cpp is missing #979386
+		# c-ts-mode-test-filling
+		%lisp/progmodes/c-ts-mode-tests.el
+
 		# Reason: test is not skipped if tree-sitter-tsx is not installed
 		# Bug #922525
 		%lisp/progmodes/typescript-ts-mode-tests.el
