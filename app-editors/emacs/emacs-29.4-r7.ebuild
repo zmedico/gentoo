@@ -458,10 +458,6 @@ src_test() {
 		# internet-is-working
 		%src/process-tests.el
 
-		# Reason: fails with stable version of tree-sitter-json due to
-		# ast changes. Bug #922525
-		%src/treesit-tests.log
-
 		# Reason: test not skipped if tree-sitter-cpp is missing #979386
 		# c-ts-mode-test-filling
 		%lisp/progmodes/c-ts-mode-tests.el
