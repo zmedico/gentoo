@@ -67,27 +67,27 @@ DOC_CONTENTS="
 S="${WORKDIR}/${P}/${PN}"
 
 Kconfig_style_config() {
-		#param 1 is CONFIG_* item
-		#param 2 is what to set it = to, defaulting in y
-		CONFIG_PARAM="${CONFIG_HEADER:-CONFIG_}$1"
-		setting="${2:-y}"
+	#param 1 is CONFIG_* item
+	#param 2 is what to set it = to, defaulting in y
+	CONFIG_PARAM="${CONFIG_HEADER:-CONFIG_}$1"
+	setting="${2:-y}"
 
-		if [ ! $setting = n ]; then
-			#first remove any leading "# " if $2 is not n
-			sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
-			#set item = $setting (defaulting to y)
-			if ! sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config; then
-				echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
-			fi
-			if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
-				echo "$CONFIG_PARAM=$setting" >>.config
-			fi
-		else
-			#ensure item commented out
-			if ! sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config; then
-				echo "Kconfig_style_config error commenting $CONFIG_PARAM"
-			fi
+	if [ ! $setting = n ]; then
+		#first remove any leading "# " if $2 is not n
+		sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
+		#set item = $setting (defaulting to y)
+		if ! sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config; then
+			echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
 		fi
+		if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
+			echo "$CONFIG_PARAM=$setting" >>.config
+		fi
+	else
+		#ensure item commented out
+		if ! sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config; then
+			echo "Kconfig_style_config error commenting $CONFIG_PARAM"
+		fi
+	fi
 }
 
 src_prepare() {
