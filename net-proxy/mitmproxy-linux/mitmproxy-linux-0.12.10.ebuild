@@ -42,12 +42,12 @@ declare -A GIT_CRATES=(
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 RUST_REQ_USE="llvm_targets_BPF(+),rust-src"
 
 inherit cargo distutils-r1 pypi
 
-DESCRIPTION="mitmproxy's Rust bits"
+DESCRIPTION="mitmproxy's Rust bits (Linux-specific part)"
 HOMEPAGE="
 	https://github.com/mitmproxy/mitmproxy_rs/
 	https://pypi.org/project/mitmproxy-rs/
