@@ -10,6 +10,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nlnetlabs.asc
 inherit toolchain-funcs perl-module verify-sig
 
 DESCRIPTION="Perl Interface to the Domain Name System"
+HOMEPAGE="https://www.net-dns.org/"
 SRC_URI="
 	https://www.net-dns.org/download/${PN}-${DIST_VERSION}.tar.gz
 	verify-sig? ( https://www.net-dns.org/download/${PN}-${DIST_VERSION}.tar.gz.asc )
