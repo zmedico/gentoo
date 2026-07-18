@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,10 @@ ruby_add_rdepend "
 	dev-ruby/minitest:*
 	>=dev-ruby/power_assert-1.1
 "
+
+PATCHES=(
+	"${FILESDIR}"/minitest-power_assert-0.3.1-ruby34.patch
+)
 
 all_ruby_prepare() {
 	sed -i -e '/bundle/ s:^:#:' Rakefile || die
