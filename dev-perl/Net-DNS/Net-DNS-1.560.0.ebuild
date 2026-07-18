@@ -6,9 +6,14 @@ EAPI=8
 DIST_AUTHOR=NLNETLABS
 DIST_VERSION=1.56
 DIST_EXAMPLES=( "contrib" "demo" )
-inherit toolchain-funcs perl-module
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nlnetlabs.asc
+inherit toolchain-funcs perl-module verify-sig
 
 DESCRIPTION="Perl Interface to the Domain Name System"
+SRC_URI="
+	https://www.net-dns.org/download/${PN}-${DIST_VERSION}.tar.gz
+	verify-sig? ( https://www.net-dns.org/download/${PN}-${DIST_VERSION}.tar.gz.asc )
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,6 +32,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
+	verify-sig? ( >=sec-keys/openpgp-keys-nlnetlabs-20260101 )
 "
 
 src_prepare() {
