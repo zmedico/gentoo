@@ -30,9 +30,13 @@ BDEPEND="
 	test? (
 		dev-python/myst-parser[${PYTHON_USEDEP}]
 		dev-python/seedir[${PYTHON_USEDEP}]
-		dev-python/testfixtures[${PYTHON_USEDEP}]
+		>=dev-python/testfixtures-12[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/sybil-10.1.0-fix-tests-against-testfixtures-12.patch
+)
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
