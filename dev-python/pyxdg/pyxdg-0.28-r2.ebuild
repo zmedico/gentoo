@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.28-py3.12.patch
 	"${FILESDIR}"/${PN}-0.28-py3.14.patch
+	"${FILESDIR}"/${PN}-0.28-shared-mine-info-2.5.patch
 )
 
 distutils_enable_tests pytest
