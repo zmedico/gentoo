@@ -30,4 +30,5 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.28-shared-mine-info-2.5.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
