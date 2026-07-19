@@ -22,10 +22,8 @@ LICENSE="MIT"
 # .1 is a fudge factor for 0.18 fixing compat w/ 0.16, drop on next
 # SONAME change.
 SLOT="0/5.1"
-IUSE="cpu_flags_x86_rdrand doc static-libs test threads"
+IUSE="cpu_flags_x86_rdrand static-libs test threads"
 RESTRICT="!test? ( test )"
-
-BDEPEND="doc? ( >=app-text/doxygen-1.8.13 )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
@@ -55,20 +53,4 @@ multilib_src_configure() {
 	)
 
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-	if use doc && multilib_is_native_abi; then
-		meson_build doc
-	fi
-}
-
-multilib_src_install() {
-	meson_src_install
-
-	if multilib_is_native_abi; then
-		use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
-		einstalldocs
-	fi
 }
