@@ -53,7 +53,7 @@ src_configure() {
 		$(use_with cxx)
 		$(use_enable static-libs static)
 	)
-	econf ${myconf[@]}
+	econf "${myconf[@]}"
 }
 
 src_compile() {
