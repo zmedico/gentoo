@@ -62,7 +62,7 @@ bundle_src_uri
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="amf +fdk gui libdovi numa nvdec nvenc qsv x265"
+IUSE="amf +fdk gui libdovi numa nvdec nvenc qsv vaapi x265"
 
 REQUIRED_USE="
 	numa? ( x265 )
@@ -105,6 +105,7 @@ COMMON_DEPEND="
 		media-libs/libva:=
 		>=media-libs/libvpl-1.13.0:=
 	)
+	vaapi? ( media-libs/libva:=[X] )
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -200,8 +201,9 @@ src_configure() {
 		$(use_enable numa)
 		$(use_enable nvdec)
 		$(use_enable nvenc)
-		$(use_enable x265)
 		$(use_enable qsv)
+		$(use_enable vaapi)
+		$(use_enable x265)
 	)
 
 	edo ./configure ${myconfargs[@]}
