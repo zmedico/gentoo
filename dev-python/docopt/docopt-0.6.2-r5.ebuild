@@ -26,4 +26,5 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.2-pytest9.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
