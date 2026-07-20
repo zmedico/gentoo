@@ -42,4 +42,5 @@ EPYTEST_DESELECT=(
 	"tbump/test/test_init.py"
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
