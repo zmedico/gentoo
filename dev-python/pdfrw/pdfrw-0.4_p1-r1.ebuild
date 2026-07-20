@@ -50,6 +50,7 @@ BDEPEND="
 "
 
 # unittest would be sufficient but its output is unreadable
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_unpack() {
