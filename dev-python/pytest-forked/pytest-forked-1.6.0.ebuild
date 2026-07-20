@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,19 +31,21 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	local PATCHES=(
-		# https://github.com/pytest-dev/pytest-forked/pull/90
-		"${FILESDIR}/${P}-pytest-8.patch"
-	)
+PATCHES=(
+	# backports from master branch
+	"${FILESDIR}/${P}-pytest-8.patch"
+	"${FILESDIR}/${P}-pytest-9.patch"
+)
 
-	distutils-r1_src_prepare
+python_prepare_all() {
+	distutils-r1_python_prepare_all
 
 	# this is not printed when loaded via PYTEST_PLUGINS
-	sed -i -e '/loaded_pytest_plugins/d' testing/test_xfail_behavior.py || die
+	sed -e '/loaded_pytest_plugins/d' -i testing/test_xfail_behavior.py || die
 }
 
 python_test() {
+	local -x COLUMNS=80 # tests check output bug #754165
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_forked
 	epytest -o tmp_path_retention_count=1
