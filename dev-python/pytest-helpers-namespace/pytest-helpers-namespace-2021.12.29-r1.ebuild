@@ -27,17 +27,13 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
-	)
 "
 
+EPYTEST_PLUGINS=( ${PN} pytest-forked )
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_helpers_namespace.plugin
-	epytest -p pytest_forked --forked
+	epytest --forked
 }
