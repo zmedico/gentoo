@@ -10,6 +10,7 @@ DESCRIPTION="FFmpeg built specifically for codec support in Chromium-based brows
 HOMEPAGE="https://ffmpeg.org/"
 SRC_URI="https://distfiles.gentoo.org/pub/proj/chromium/ffmpeg/${P}.tar.xz"
 S="${WORKDIR}/ffmpeg-chromium-${PV%%\.*}"
+
 LICENSE="
 	!gpl? ( LGPL-2.1 )
 	gpl? ( GPL-2 )
