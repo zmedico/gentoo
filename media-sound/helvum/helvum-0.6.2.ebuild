@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {16..19} )
-
+RUST_MIN_VER="1.94"
 inherit cargo desktop llvm-r2 xdg
 
 DESCRIPTION="A GTK patchbay for pipewire"
@@ -43,8 +43,6 @@ DEPEND="
 	x11-libs/pango
 "
 RDEPEND="${DEPEND}"
-
-RUST_MIN_VER="1.94"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
