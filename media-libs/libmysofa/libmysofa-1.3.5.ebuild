@@ -21,11 +21,6 @@ BDEPEND="
 	test? ( dev-util/cunit )
 "
 
-PATCHES=(
-	# tests fail on 1.3.4 but passing on master - https://github.com/hoene/libmysofa/issues/243
-	"${FILESDIR}/0001-optimized-code-of-btree-loop.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=OFF
