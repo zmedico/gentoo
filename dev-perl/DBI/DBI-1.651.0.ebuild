@@ -7,7 +7,9 @@ DIST_AUTHOR=HMBRAND
 DIST_VERSION=1.651
 DIST_A_EXT=tgz
 DIST_EXAMPLES=("ex/*")
-inherit multiprocessing perl-module
+# bug #675164
+DIST_TEST="do"
+inherit perl-module
 
 DESCRIPTION="Database independent interface for Perl"
 
@@ -30,11 +32,3 @@ PERL_RM_FILES=(
 	t/pod-coverage.t
 	t/pod.t
 )
-
-src_test() {
-	if [[ $(get_makeopts_jobs) -gt 70 ]]; then
-		einfo "Reducing jobs to 70. Bug: https://bugs.gentoo.org/675164"
-		MAKEOPTS="${MAKEOPTS} -j70";
-	fi
-	perl-module_src_test
-}
